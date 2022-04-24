@@ -1,0 +1,41 @@
+[1.387s] Invoking command in '/home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot': PYTHONPATH=/home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed
+[1.724s] running egg_info
+[1.727s] creating ../../build/camera_turtlebot/camera_turtlebot.egg-info
+[1.728s] writing ../../build/camera_turtlebot/camera_turtlebot.egg-info/PKG-INFO
+[1.730s] writing dependency_links to ../../build/camera_turtlebot/camera_turtlebot.egg-info/dependency_links.txt
+[1.730s] writing entry points to ../../build/camera_turtlebot/camera_turtlebot.egg-info/entry_points.txt
+[1.731s] writing requirements to ../../build/camera_turtlebot/camera_turtlebot.egg-info/requires.txt
+[1.732s] writing top-level names to ../../build/camera_turtlebot/camera_turtlebot.egg-info/top_level.txt
+[1.753s] writing manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'
+[1.883s] reading manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'
+[1.887s] writing manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'
+[1.889s] running build
+[1.889s] running build_py
+[1.890s] creating /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build
+[1.890s] creating /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib
+[1.890s] creating /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot
+[1.891s] copying camera_turtlebot/__init__.py -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot
+[1.892s] copying camera_turtlebot/camera_node.py -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot
+[1.893s] copying camera_turtlebot/image_processing_node.py -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot
+[1.894s] running install
+[1.898s] running install_lib
+[1.902s] creating /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot
+[1.902s] copying /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot/__init__.py -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot
+[1.903s] copying /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot/camera_node.py -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot
+[1.906s] copying /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot/image_processing_node.py -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot
+[1.910s] byte-compiling /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot/__init__.py to __init__.cpython-38.pyc
+[1.920s] byte-compiling /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot/camera_node.py to camera_node.cpython-38.pyc
+[1.926s] byte-compiling /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot/image_processing_node.py to image_processing_node.cpython-38.pyc
+[1.931s] running install_data
+[1.937s] creating /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/ament_index
+[1.938s] creating /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/ament_index/resource_index
+[1.939s] creating /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/ament_index/resource_index/packages
+[1.941s] copying resource/camera_turtlebot -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/ament_index/resource_index/packages
+[1.942s] copying package.xml -> /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot
+[1.943s] running install_egg_info
+[1.954s] Copying ../../build/camera_turtlebot/camera_turtlebot.egg-info to /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot-0.0.0-py3.8.egg-info
+[1.964s] running install_scripts
+[2.057s] Installing camera script to /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot
+[2.058s] Installing processing script to /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot
+[2.059s] writing list of installed files to '/home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log'
+[2.125s] Invoked command in '/home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot' returned '0': PYTHONPATH=/home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/henriette/AutonomousVehicles/Submission/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed

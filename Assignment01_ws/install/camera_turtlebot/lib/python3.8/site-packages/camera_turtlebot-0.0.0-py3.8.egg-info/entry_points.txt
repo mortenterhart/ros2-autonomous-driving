@@ -1,0 +1,4 @@
+[console_scripts]
+camera = py_pubsub.camera_node:main
+processing = py_pubsub.image_processing_node:main
+
