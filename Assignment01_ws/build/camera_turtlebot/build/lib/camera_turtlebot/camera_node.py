@@ -7,8 +7,8 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import numpy as np
 
-import picamera
-import picamera.array
+# import picamera
+# import picamera.array
 
 class Camera(Node):
 
@@ -23,14 +23,14 @@ class Camera(Node):
 
                 # img_msg = Image(data =)
                 # take image TODO:
-                
 
-                
+
+
                 # publish image
                 empty_img = np.zeros((100,100,3))
                 bridge = CvBridge()
-                
-                try:    
+
+                try:
                         msg = bridge.cv2_to_imgmsg(empty_img, "64FC3")
                         self.publisher_.publish(msg)
                         print(msg)
@@ -38,11 +38,11 @@ class Camera(Node):
                 except CvBridgeError as e:
                         print(e)
 
-        def capture(self):
-                with picamera.PiCamera() as camera:
-                        with picamera.array.PiRGBArray(camera) as output:
-                                camera.capture(output, 'rgb')
-                                print('Captured %dx%d image' % (output.array.shape[1], output.array.shape[0]))
+        # def capture(self):
+        #         with picamera.PiCamera() as camera:
+        #                 with picamera.array.PiRGBArray(camera) as output:
+        #                         camera.capture(output, 'rgb')
+        #                         print('Captured %dx%d image' % (output.array.shape[1], output.array.shape[0]))
 
 
 

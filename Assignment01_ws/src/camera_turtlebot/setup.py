@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'camera = py_pubsub.camera_node:main',
-            'processing = py_pubsub.image_processing_node:main',
+            'camera = camera_turtlebot.camera_node:main',
+            'processing = camera_turtlebot.image_processing_node:main',
         ],
     },
 )
