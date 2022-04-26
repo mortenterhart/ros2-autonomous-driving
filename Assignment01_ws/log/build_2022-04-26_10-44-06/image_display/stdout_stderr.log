@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/image_display/image_display.egg-info/PKG-INFO
+writing dependency_links to ../../build/image_display/image_display.egg-info/dependency_links.txt
+writing entry points to ../../build/image_display/image_display.egg-info/entry_points.txt
+writing requirements to ../../build/image_display/image_display.egg-info/requires.txt
+writing top-level names to ../../build/image_display/image_display.egg-info/top_level.txt
+reading manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'
+writing manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'
+running build
+running build_py
+copying image_display/image_display_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build/lib/image_display
+running install
+running install_lib
+copying /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build/lib/image_display/image_display_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display
+byte-compiling /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display/image_display_node.py to image_display_node.cpython-38.pyc
+running install_data
+copying package.xml -> /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display
+running install_egg_info
+removing '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/image_display/image_display.egg-info to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info
+running install_scripts
+Installing display script to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/image_display
+writing list of installed files to '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log'

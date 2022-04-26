@@ -1,0 +1,25 @@
+[2.069s] Invoking command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed
+[2.782s] running egg_info
+[2.784s] writing ../../build/camera_turtlebot/camera_turtlebot.egg-info/PKG-INFO
+[2.786s] writing dependency_links to ../../build/camera_turtlebot/camera_turtlebot.egg-info/dependency_links.txt
+[2.787s] writing entry points to ../../build/camera_turtlebot/camera_turtlebot.egg-info/entry_points.txt
+[2.788s] writing requirements to ../../build/camera_turtlebot/camera_turtlebot.egg-info/requires.txt
+[2.789s] writing top-level names to ../../build/camera_turtlebot/camera_turtlebot.egg-info/top_level.txt
+[2.930s] reading manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'
+[2.935s] writing manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'
+[2.936s] running build
+[2.936s] running build_py
+[2.939s] copying camera_turtlebot/image_processing_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot
+[2.940s] running install
+[2.947s] running install_lib
+[2.952s] copying /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot/image_processing_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot
+[2.954s] byte-compiling /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot/image_processing_node.py to image_processing_node.cpython-38.pyc
+[2.958s] running install_data
+[2.961s] running install_egg_info
+[2.966s] removing '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot-0.0.0-py3.8.egg-info' (and everything under it)
+[2.973s] Copying ../../build/camera_turtlebot/camera_turtlebot.egg-info to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot-0.0.0-py3.8.egg-info
+[2.974s] running install_scripts
+[3.026s] Installing camera script to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot
+[3.027s] Installing processing script to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot
+[3.029s] writing list of installed files to '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log'
+[3.092s] Invoked command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot' returned '0': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed

@@ -1,0 +1,117 @@
+[0.000000] (-) TimerEvent: {}
+[0.000377] (camera_turtlebot) JobQueued: {'identifier': 'camera_turtlebot', 'dependencies': OrderedDict()}
+[0.000481] (image_display) JobQueued: {'identifier': 'image_display', 'dependencies': OrderedDict()}
+[0.000556] (camera_turtlebot) JobStarted: {'identifier': 'camera_turtlebot'}
+[0.093903] (-) TimerEvent: {}
+[0.194740] (-) TimerEvent: {}
+[0.295419] (-) TimerEvent: {}
+[0.396164] (-) TimerEvent: {}
+[0.496940] (-) TimerEvent: {}
+[0.597573] (-) TimerEvent: {}
+[0.698224] (-) TimerEvent: {}
+[0.799041] (-) TimerEvent: {}
+[0.900023] (-) TimerEvent: {}
+[1.000658] (-) TimerEvent: {}
+[1.101315] (-) TimerEvent: {}
+[1.201985] (-) TimerEvent: {}
+[1.302722] (-) TimerEvent: {}
+[1.403323] (-) TimerEvent: {}
+[1.503886] (-) TimerEvent: {}
+[1.604490] (-) TimerEvent: {}
+[1.705138] (-) TimerEvent: {}
+[1.805878] (-) TimerEvent: {}
+[1.906530] (-) TimerEvent: {}
+[2.007220] (-) TimerEvent: {}
+[2.016475] (camera_turtlebot) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/camera_turtlebot', 'build', '--build-base', '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build', 'install', '--prefix', '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot', '--record', '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log', '--single-version-externally-managed'], 'cwd': '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'nils', 'LC_TIME': 'de_DE.UTF-8', 'SSH_AGENT_PID': '887', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/home/nils', 'OLDPWD': '/home/nils/allassignments-gruppe-e', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'de_DE.UTF-8', 'MANAGERPID': '640', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/nils/colcon_ws/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'nils', 'JOURNAL_STREAM': '8:29204', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'nils', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/nils-VirtualBox:@/tmp/.ICE-unix/930,unix/nils-VirtualBox:/tmp/.ICE-unix/930', 'INVOCATION_ID': 'c4966d3f25214c7aa8b71b82cb438875', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'de_DE.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/e5aca566_65ba_4ec5_a525_7b3698905a5f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'de_DE.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.116', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '31', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'SHELL': '/bin/bash', 'LC_NAME': 'de_DE.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'de_DE.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'de_DE.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'LC_NUMERIC': 'de_DE.UTF-8', 'LC_PAPER': 'de_DE.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6003'}, 'shell': False}
+[2.107438] (-) TimerEvent: {}
+[2.208331] (-) TimerEvent: {}
+[2.308983] (-) TimerEvent: {}
+[2.409619] (-) TimerEvent: {}
+[2.510233] (-) TimerEvent: {}
+[2.610904] (-) TimerEvent: {}
+[2.692634] (camera_turtlebot) StdoutLine: {'line': b'running egg_info\n'}
+[2.694976] (camera_turtlebot) StdoutLine: {'line': b'writing ../../build/camera_turtlebot/camera_turtlebot.egg-info/PKG-INFO\n'}
+[2.696255] (camera_turtlebot) StdoutLine: {'line': b'writing dependency_links to ../../build/camera_turtlebot/camera_turtlebot.egg-info/dependency_links.txt\n'}
+[2.697310] (camera_turtlebot) StdoutLine: {'line': b'writing entry points to ../../build/camera_turtlebot/camera_turtlebot.egg-info/entry_points.txt\n'}
+[2.698256] (camera_turtlebot) StdoutLine: {'line': b'writing requirements to ../../build/camera_turtlebot/camera_turtlebot.egg-info/requires.txt\n'}
+[2.699102] (camera_turtlebot) StdoutLine: {'line': b'writing top-level names to ../../build/camera_turtlebot/camera_turtlebot.egg-info/top_level.txt\n'}
+[2.711068] (-) TimerEvent: {}
+[2.811818] (-) TimerEvent: {}
+[2.836193] (camera_turtlebot) StdoutLine: {'line': b"reading manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'\n"}
+[2.841630] (camera_turtlebot) StdoutLine: {'line': b"writing manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'\n"}
+[2.846034] (camera_turtlebot) StdoutLine: {'line': b'running build\n'}
+[2.846648] (camera_turtlebot) StdoutLine: {'line': b'running build_py\n'}
+[2.848422] (camera_turtlebot) StdoutLine: {'line': b'copying camera_turtlebot/image_processing_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot\n'}
+[2.850713] (camera_turtlebot) StdoutLine: {'line': b'running install\n'}
+[2.854197] (camera_turtlebot) StdoutLine: {'line': b'running install_lib\n'}
+[2.857486] (camera_turtlebot) StdoutLine: {'line': b'copying /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot/image_processing_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot\n'}
+[2.859441] (camera_turtlebot) StdoutLine: {'line': b'byte-compiling /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot/image_processing_node.py to image_processing_node.cpython-38.pyc\n'}
+[2.865188] (camera_turtlebot) StdoutLine: {'line': b'running install_data\n'}
+[2.867362] (camera_turtlebot) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.873274] (camera_turtlebot) StdoutLine: {'line': b"removing '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[2.880340] (camera_turtlebot) StdoutLine: {'line': b'Copying ../../build/camera_turtlebot/camera_turtlebot.egg-info to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot-0.0.0-py3.8.egg-info\n'}
+[2.883455] (camera_turtlebot) StdoutLine: {'line': b'running install_scripts\n'}
+[2.911957] (-) TimerEvent: {}
+[2.932194] (camera_turtlebot) StdoutLine: {'line': b'Installing camera script to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot\n'}
+[2.933284] (camera_turtlebot) StdoutLine: {'line': b'Installing processing script to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot\n'}
+[2.934752] (camera_turtlebot) StdoutLine: {'line': b"writing list of installed files to '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log'\n"}
+[2.995906] (camera_turtlebot) CommandEnded: {'returncode': 0}
+[3.012196] (-) TimerEvent: {}
+[3.035016] (camera_turtlebot) JobEnded: {'identifier': 'camera_turtlebot', 'rc': 0}
+[3.036765] (image_display) JobStarted: {'identifier': 'image_display'}
+[3.112520] (-) TimerEvent: {}
+[3.213420] (-) TimerEvent: {}
+[3.314073] (-) TimerEvent: {}
+[3.414793] (-) TimerEvent: {}
+[3.515398] (-) TimerEvent: {}
+[3.616019] (-) TimerEvent: {}
+[3.716629] (-) TimerEvent: {}
+[3.817283] (-) TimerEvent: {}
+[3.917962] (-) TimerEvent: {}
+[4.018820] (-) TimerEvent: {}
+[4.119497] (-) TimerEvent: {}
+[4.220130] (-) TimerEvent: {}
+[4.320742] (-) TimerEvent: {}
+[4.421370] (-) TimerEvent: {}
+[4.521981] (-) TimerEvent: {}
+[4.623291] (-) TimerEvent: {}
+[4.723874] (-) TimerEvent: {}
+[4.824495] (-) TimerEvent: {}
+[4.925127] (-) TimerEvent: {}
+[5.025764] (-) TimerEvent: {}
+[5.066073] (image_display) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/image_display', 'build', '--build-base', '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build', 'install', '--prefix', '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display', '--record', '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log', '--single-version-externally-managed'], 'cwd': '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'nils', 'LC_TIME': 'de_DE.UTF-8', 'SSH_AGENT_PID': '887', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/home/nils', 'OLDPWD': '/home/nils/allassignments-gruppe-e', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'de_DE.UTF-8', 'MANAGERPID': '640', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/nils/colcon_ws/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'nils', 'JOURNAL_STREAM': '8:29204', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'nils', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/nils-VirtualBox:@/tmp/.ICE-unix/930,unix/nils-VirtualBox:/tmp/.ICE-unix/930', 'INVOCATION_ID': 'c4966d3f25214c7aa8b71b82cb438875', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'de_DE.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/e5aca566_65ba_4ec5_a525_7b3698905a5f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'de_DE.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.116', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '31', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'SHELL': '/bin/bash', 'LC_NAME': 'de_DE.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'de_DE.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'de_DE.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'LC_NUMERIC': 'de_DE.UTF-8', 'LC_PAPER': 'de_DE.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6003'}, 'shell': False}
+[5.125993] (-) TimerEvent: {}
+[5.226735] (-) TimerEvent: {}
+[5.327393] (-) TimerEvent: {}
+[5.428100] (-) TimerEvent: {}
+[5.528777] (-) TimerEvent: {}
+[5.629610] (-) TimerEvent: {}
+[5.730202] (-) TimerEvent: {}
+[5.751598] (image_display) StdoutLine: {'line': b'running egg_info\n'}
+[5.753964] (image_display) StdoutLine: {'line': b'writing ../../build/image_display/image_display.egg-info/PKG-INFO\n'}
+[5.755143] (image_display) StdoutLine: {'line': b'writing dependency_links to ../../build/image_display/image_display.egg-info/dependency_links.txt\n'}
+[5.756237] (image_display) StdoutLine: {'line': b'writing entry points to ../../build/image_display/image_display.egg-info/entry_points.txt\n'}
+[5.758239] (image_display) StdoutLine: {'line': b'writing requirements to ../../build/image_display/image_display.egg-info/requires.txt\n'}
+[5.759128] (image_display) StdoutLine: {'line': b'writing top-level names to ../../build/image_display/image_display.egg-info/top_level.txt\n'}
+[5.830385] (-) TimerEvent: {}
+[5.908443] (image_display) StdoutLine: {'line': b"reading manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'\n"}
+[5.912049] (image_display) StdoutLine: {'line': b"writing manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'\n"}
+[5.913089] (image_display) StdoutLine: {'line': b'running build\n'}
+[5.913625] (image_display) StdoutLine: {'line': b'running build_py\n'}
+[5.914598] (image_display) StdoutLine: {'line': b'copying image_display/image_display_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build/lib/image_display\n'}
+[5.915672] (image_display) StdoutLine: {'line': b'running install\n'}
+[5.918139] (image_display) StdoutLine: {'line': b'running install_lib\n'}
+[5.921263] (image_display) StdoutLine: {'line': b'copying /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build/lib/image_display/image_display_node.py -> /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display\n'}
+[5.923202] (image_display) StdoutLine: {'line': b'byte-compiling /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display/image_display_node.py to image_display_node.cpython-38.pyc\n'}
+[5.927974] (image_display) StdoutLine: {'line': b'running install_data\n'}
+[5.930544] (image_display) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.930864] (-) TimerEvent: {}
+[5.935245] (image_display) StdoutLine: {'line': b"removing '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[5.942498] (image_display) StdoutLine: {'line': b'Copying ../../build/image_display/image_display.egg-info to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info\n'}
+[5.945822] (image_display) StdoutLine: {'line': b'running install_scripts\n'}
+[6.004859] (image_display) StdoutLine: {'line': b'Installing display script to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/image_display\n'}
+[6.006408] (image_display) StdoutLine: {'line': b"writing list of installed files to '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log'\n"}
+[6.031060] (-) TimerEvent: {}
+[6.075929] (image_display) CommandEnded: {'returncode': 0}
+[6.098152] (image_display) JobEnded: {'identifier': 'image_display', 'rc': 0}
+[6.100657] (-) EventReactorShutdown: {}

@@ -1,0 +1,21 @@
+[2.008s] Invoking command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_display build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log --single-version-externally-managed
+[2.680s] running egg_info
+[2.682s] writing ../../build/image_display/image_display.egg-info/PKG-INFO
+[2.683s] writing dependency_links to ../../build/image_display/image_display.egg-info/dependency_links.txt
+[2.684s] writing entry points to ../../build/image_display/image_display.egg-info/entry_points.txt
+[2.686s] writing requirements to ../../build/image_display/image_display.egg-info/requires.txt
+[2.686s] writing top-level names to ../../build/image_display/image_display.egg-info/top_level.txt
+[2.816s] reading manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'
+[2.821s] writing manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'
+[2.822s] running build
+[2.822s] running build_py
+[2.824s] running install
+[2.826s] running install_lib
+[2.838s] running install_data
+[2.840s] running install_egg_info
+[2.846s] removing '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info' (and everything under it)
+[2.853s] Copying ../../build/image_display/image_display.egg-info to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info
+[2.857s] running install_scripts
+[2.906s] Installing display script to /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/image_display
+[2.908s] writing list of installed files to '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log'
+[2.975s] Invoked command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display' returned '0': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_display build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log --single-version-externally-managed

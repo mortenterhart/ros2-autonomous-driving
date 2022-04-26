@@ -27,11 +27,14 @@ class Camera(Node):
 
 
                 # publish image
-                empty_img = np.zeros((100,100,3))
+                empty_img = np.zeros((10,10,3))
+                empty_img[:, :3, 1] = 240
+                empty_img = empty_img / 255
+                print(empty_img.shape)
                 bridge = CvBridge()
 
                 try:
-                        msg = bridge.cv2_to_imgmsg(empty_img, "64FC3")
+                        msg = bridge.cv2_to_imgmsg(empty_img)
                         self.publisher_.publish(msg)
                         print(msg)
 

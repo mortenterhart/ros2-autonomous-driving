@@ -1,3 +1,3 @@
 [console_scripts]
-
+display = image_display.image_display_node:main
 
