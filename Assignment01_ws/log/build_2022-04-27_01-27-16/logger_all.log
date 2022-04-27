@@ -1,0 +1,175 @@
+[0.438s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.438s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f18c6b5a0d0>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=1, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f18c6b5a0d0>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f18c6b5a610>)
+[0.511s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.511s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.511s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.512s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.512s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.512s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.512s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/nils/allassignments-gruppe-e/Assignment01_ws'
+[0.512s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.512s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.514s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.554s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.555s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.555s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.555s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.555s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extensions ['ignore', 'ignore_ament_install']
+[0.555s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extension 'ignore'
+[0.556s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extension 'ignore_ament_install'
+[0.556s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extensions ['colcon_pkg']
+[0.556s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extension 'colcon_pkg'
+[0.556s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extensions ['colcon_meta']
+[0.556s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extension 'colcon_meta'
+[0.556s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extensions ['ros']
+[0.556s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_turtlebot) by extension 'ros'
+[0.565s] DEBUG:colcon.colcon_core.package_identification:Package 'src/camera_turtlebot' with type 'ros.ament_python' and name 'camera_turtlebot'
+[0.566s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extensions ['ignore', 'ignore_ament_install']
+[0.566s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extension 'ignore'
+[0.566s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extension 'ignore_ament_install'
+[0.566s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extensions ['colcon_pkg']
+[0.566s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extension 'colcon_pkg'
+[0.567s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extensions ['colcon_meta']
+[0.567s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extension 'colcon_meta'
+[0.567s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extensions ['ros']
+[0.567s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_display) by extension 'ros'
+[0.569s] DEBUG:colcon.colcon_core.package_identification:Package 'src/image_display' with type 'ros.ament_python' and name 'image_display'
+[0.569s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.569s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.569s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.570s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.570s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.622s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.622s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.627s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/nils/colcon_ws/install
+[0.633s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 332 installed packages in /opt/ros/foxy
+[0.641s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.924s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'cmake_args' from command line to 'None'
+[0.924s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'cmake_target' from command line to 'None'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'cmake_clean_cache' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'cmake_clean_first' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'cmake_force_configure' from command line to 'False'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'ament_cmake_args' from command line to 'None'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'catkin_cmake_args' from command line to 'None'
+[0.925s] Level 5:colcon.colcon_core.verb:set package 'camera_turtlebot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.925s] DEBUG:colcon.colcon_core.verb:Building package 'camera_turtlebot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot', 'merge_install': False, 'path': '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot', 'symlink_install': False, 'test_result_base': None}
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'cmake_args' from command line to 'None'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'cmake_target' from command line to 'None'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'cmake_clean_cache' from command line to 'False'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'cmake_clean_first' from command line to 'False'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'cmake_force_configure' from command line to 'False'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'ament_cmake_args' from command line to 'None'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'catkin_cmake_args' from command line to 'None'
+[0.928s] Level 5:colcon.colcon_core.verb:set package 'image_display' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.929s] DEBUG:colcon.colcon_core.verb:Building package 'image_display' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display', 'merge_install': False, 'path': '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display', 'symlink_install': False, 'test_result_base': None}
+[0.930s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.935s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.935s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot' with build type 'ament_python'
+[0.936s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_turtlebot', 'ament_prefix_path')
+[0.947s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.948s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/hook/ament_prefix_path.ps1'
+[0.950s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/hook/ament_prefix_path.dsv'
+[0.952s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/hook/ament_prefix_path.sh'
+[0.960s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.960s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.746s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot'
+[1.748s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.748s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.066s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed
+[4.079s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot' returned '0': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed
+[4.097s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot' for CMake module files
+[4.098s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot' for CMake config files
+[4.100s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib'
+[4.101s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/bin'
+[4.101s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/pkgconfig/camera_turtlebot.pc'
+[4.102s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages'
+[4.103s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_turtlebot', 'pythonpath')
+[4.105s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/hook/pythonpath.ps1'
+[4.106s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/hook/pythonpath.dsv'
+[4.107s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/hook/pythonpath.sh'
+[4.108s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_turtlebot)
+[4.111s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/package.ps1'
+[4.114s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/package.dsv'
+[4.117s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/package.sh'
+[4.119s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/package.bash'
+[4.122s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/camera_turtlebot/package.zsh'
+[4.124s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nils/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/share/colcon-core/packages/camera_turtlebot)
+[4.128s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display' with build type 'ament_python'
+[4.128s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_display', 'ament_prefix_path')
+[4.130s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/hook/ament_prefix_path.ps1'
+[4.131s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/hook/ament_prefix_path.dsv'
+[4.132s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/hook/ament_prefix_path.sh'
+[4.135s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.135s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.944s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display'
+[4.947s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.947s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.260s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_display build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log --single-version-externally-managed
+[7.276s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display' for CMake module files
+[7.278s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nils/allassignments-gruppe-e/Assignment01_ws/src/image_display' returned '0': PYTHONPATH=/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_display build --build-base /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/build install --prefix /home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display --record /home/nils/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log --single-version-externally-managed
+[7.280s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display' for CMake config files
+[7.282s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib'
+[7.283s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/bin'
+[7.283s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/pkgconfig/image_display.pc'
+[7.284s] Level 1:colcon.colcon_core.environment:checking '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages'
+[7.284s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_display', 'pythonpath')
+[7.286s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/hook/pythonpath.ps1'
+[7.287s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/hook/pythonpath.dsv'
+[7.288s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/hook/pythonpath.sh'
+[7.290s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_display)
+[7.292s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/package.ps1'
+[7.293s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/package.dsv'
+[7.296s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/package.sh'
+[7.297s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/package.bash'
+[7.298s] INFO:colcon.colcon_core.shell:Creating package script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/image_display/package.zsh'
+[7.299s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/share/colcon-core/packages/image_display)
+[7.302s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[7.303s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[7.303s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[7.303s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[7.343s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[7.344s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[7.346s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[7.391s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[7.393s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/local_setup.ps1'
+[7.402s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/_local_setup_util_ps1.py'
+[7.411s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/setup.ps1'
+[7.419s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/local_setup.sh'
+[7.422s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/_local_setup_util_sh.py'
+[7.425s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/setup.sh'
+[7.434s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/local_setup.bash'
+[7.437s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/setup.bash'
+[7.446s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/local_setup.zsh'
+[7.447s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nils/allassignments-gruppe-e/Assignment01_ws/install/setup.zsh'
