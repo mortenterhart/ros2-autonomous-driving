@@ -3,7 +3,7 @@ from rclpy.node import Node
 from rclpy.parameter import Parameter
 from rcl_interfaces.msg import SetParametersResult
 from std_msgs.msg import String
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import CompressedImage
 from cv_bridge import CvBridge, CvBridgeError
 import numpy as np
 import cv2
@@ -14,7 +14,7 @@ class ImgDisplayNode(Node):
     def __init__(self):
         super().__init__('img_display_node')
         # subscribe to the topic of processed images
-        self.subscriber_img_ = self.create_subscription(Image, '/proc_img', self.display_img_data, 10)
+        self.subscriber_img_ = self.create_subscription(CompressedImage, '/proc_img', self.display_img_data, 10)
 
         # set parameters and detect a parameter change
         self.store_imgs = False
@@ -26,7 +26,7 @@ class ImgDisplayNode(Node):
     def display_img_data(self, msg):
         # display the image data
         bridge = CvBridge()
-        img_msg = bridge.imgmsg_to_cv2(msg)
+        img_msg = bridge.compressed_imgmsg_to_cv2(msg)
 
         if self.show_stream:
             cv2.imshow("display", img_msg)

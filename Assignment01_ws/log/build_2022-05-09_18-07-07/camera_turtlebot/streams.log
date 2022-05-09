@@ -1,0 +1,25 @@
+[1.126s] Invoking command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot': PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed
+[1.327s] running egg_info
+[1.328s] writing ../../build/camera_turtlebot/camera_turtlebot.egg-info/PKG-INFO
+[1.330s] writing dependency_links to ../../build/camera_turtlebot/camera_turtlebot.egg-info/dependency_links.txt
+[1.330s] writing entry points to ../../build/camera_turtlebot/camera_turtlebot.egg-info/entry_points.txt
+[1.331s] writing requirements to ../../build/camera_turtlebot/camera_turtlebot.egg-info/requires.txt
+[1.331s] writing top-level names to ../../build/camera_turtlebot/camera_turtlebot.egg-info/top_level.txt
+[1.368s] reading manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'
+[1.369s] writing manifest file '../../build/camera_turtlebot/camera_turtlebot.egg-info/SOURCES.txt'
+[1.370s] running build
+[1.370s] running build_py
+[1.370s] copying camera_turtlebot/image_processing_node.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot
+[1.370s] running install
+[1.372s] running install_lib
+[1.373s] copying /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build/lib/camera_turtlebot/image_processing_node.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot
+[1.374s] byte-compiling /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot/image_processing_node.py to image_processing_node.cpython-38.pyc
+[1.376s] running install_data
+[1.377s] running install_egg_info
+[1.380s] removing '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot-0.0.0-py3.8.egg-info' (and everything under it)
+[1.381s] Copying ../../build/camera_turtlebot/camera_turtlebot.egg-info to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages/camera_turtlebot-0.0.0-py3.8.egg-info
+[1.383s] running install_scripts
+[1.403s] Installing camera script to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot
+[1.403s] Installing processing script to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/camera_turtlebot
+[1.403s] writing list of installed files to '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log'
+[1.475s] Invoked command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/src/camera_turtlebot' returned '0': PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_turtlebot build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/camera_turtlebot --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/camera_turtlebot/install.log --single-version-externally-managed

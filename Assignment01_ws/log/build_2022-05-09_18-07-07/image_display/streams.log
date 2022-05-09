@@ -1,0 +1,24 @@
+[1.097s] Invoking command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/src/image_display': PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_display build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/image_display/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log --single-version-externally-managed
+[1.293s] running egg_info
+[1.294s] writing ../../build/image_display/image_display.egg-info/PKG-INFO
+[1.295s] writing dependency_links to ../../build/image_display/image_display.egg-info/dependency_links.txt
+[1.295s] writing entry points to ../../build/image_display/image_display.egg-info/entry_points.txt
+[1.296s] writing requirements to ../../build/image_display/image_display.egg-info/requires.txt
+[1.296s] writing top-level names to ../../build/image_display/image_display.egg-info/top_level.txt
+[1.330s] reading manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'
+[1.332s] writing manifest file '../../build/image_display/image_display.egg-info/SOURCES.txt'
+[1.332s] running build
+[1.333s] running build_py
+[1.333s] copying image_display/image_display_node.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/image_display/build/lib/image_display
+[1.333s] running install
+[1.335s] running install_lib
+[1.336s] copying /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/image_display/build/lib/image_display/image_display_node.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display
+[1.337s] byte-compiling /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display/image_display_node.py to image_display_node.cpython-38.pyc
+[1.340s] running install_data
+[1.341s] running install_egg_info
+[1.344s] removing '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info' (and everything under it)
+[1.344s] Copying ../../build/image_display/image_display.egg-info to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display-0.0.0-py3.8.egg-info
+[1.345s] running install_scripts
+[1.370s] Installing display script to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/image_display
+[1.370s] writing list of installed files to '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log'
+[1.426s] Invoked command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/src/image_display' returned '0': PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/image_display build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/image_display/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/install/image_display --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment01_ws/build/image_display/install.log --single-version-externally-managed
