@@ -1,0 +1,133 @@
+\documentclass[12pt,a4paper,german]{article}
+\usepackage{url}
+%\usepackage{graphics}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{paralist}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+\usepackage{enumitem}
+\geometry{left=2.0cm,textwidth=17cm,top=3.5cm,textheight=23cm}
+
+%\renewcommand{\thesection}{\arabic{section}.} %Nummerierung der Sections anpassen
+\renewcommand{\labelenumi}{\alph{enumi})}  %Nummerierung der Listen anpassen
+
+%%%%%%%%%% Fill out the the definitions %%%%%%%%%
+\def \name {Autonomous Vehicles and AI}					%			%
+\def \gruppe {E}					%
+\def \uebung {2}								%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ % DO NOT MODIFY THIS HEADER
+\newcommand{\hwsol}{
+\vspace*{-2cm}
+\noindent \name \hfill Group: \gruppe \\
+%\noindent \pmatrikel \quad \pname \\
+\begin{center}{\Large \bf Assignment \uebung}\end{center}
+}
+
+
+\usepackage{amsmath}
+
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstdefinestyle{mystyle}{
+  %basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+
+\lstset{style=mystyle}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+%Import header
+\hwsol
+
+
+\section{Requirements}
+    The following requirements are structured into functional and quality requirements, and constraints. The requirements are derived from the 
+    Formula Student Rules\footnote{\label{rules-book} FS Rulebook: \url{https://www.formulastudent.de/fileadmin/user_upload/all/2022/rules/FS-Rules_2022_v1.0.pdf}} 
+    and Handbook\footnote{\label{handbook} FS Handbook: \url{https://www.formulastudent.de/fileadmin/user_upload/all/2022/rules/FSG22_Competition_Handbook_v1.1.pdf}} aswell as from 
+    WISE\footnote{\label{wise} WISE: \url{https://uwaterloo.ca/waterloo-intelligent-systems-engineering-lab/projects/wise-drive-requirements-analysis-framework-automated-driving}}. 
+    \subsection{Functional requirements}
+    \begin{enumerate}[label=\arabic*.]
+        \item The car must be able to drive in longitudinal and lateral directions. In extended form that means the car needs to be able to accelerate and decelerate. The car needs to be able to steer left and right. The car needs to be able to drive backward.
+        \item The car is required to have an emergency shutdown enabling the user to stop the car at any time. This is a functional requirement as well as a constrained due to the rules of the Formula Student. Due to this reason the emergency shutdown is listed again in the constraints section.
+        \item The car must be able to follow a track defined by colored cones. The colors of the cones as well as their relaitve position is defined in FS Rulebook\footref{rules-book}.
+        \item The car must be able to switch between a manual and autonomous mode.
+        \item The car must be designed so that it can carry a driver in manual mode.
+        \item The car needs to be able to follow a pre-programmed trajectory.
+    \end{enumerate}
+    \subsection{Quality requirements}
+    \begin{enumerate}[label=\arabic*.]
+        \item The car must stop in a designated space marked by different colored cones or at least 75 m/30 m after the finish line depending on the event it is participating in. %TODO: Das könnnte man vielleicht noch in drei spezifischere requirements aufteilen
+        \item The car has to be waterproof.
+        \item The car should follow an ideal trajectory and complete the course as optimal as possible.
+        \item The system should be able to operate in all weather conditions.
+        \item The car should be able to drive with different lighting levels (daytime, nighttime).
+        \item The car must take safety measures as a response to an endangering situation. As an addition we define some endangering situation that are important as follows: 
+        \begin{itemize}
+            \item loss of sensors or sensor data
+            \item in expectation of a crash
+            \item with unstable driving situations (e.g. slippery road, icy road, foggy weather etc.)
+        \end{itemize}
+        Taking into account all environmental factors and the situations we can specify this requirement further by adding following requirements: 
+        \begin{enumerate}[label=6.\arabic*.]
+            \item The car needs to stop in anticipation of a crash
+            \item The car needs to switch into a safety mode, where it for example reduces the speed limit, if there is a loss of sensor data or if driving in unstable conditions 
+        \end{enumerate}
+        \item The car must not exceed a power consumption of 85 kWh.
+        \item The car must be able to recover from instabilities and skidding.
+    \end{enumerate}
+    \subsection{Constraints}
+    Since our self driving race car is developed for the Formula Student Competition there are several rules that need to be taken into account while developing. From the FS Handbook\footref{handbook} and Rules\footref{rules-book} there are following constraints that we derived:
+    \begin{itemize}
+        \item A data logger according to the Data Logger Specification has to be mounted to the car.
+        \item Remote Emergency System and Shutdown Circuit
+        \item The status of the Autonomous System is defined by the rulebook (state machine)
+        \item The status of the car must be displayed with different light signals at all time
+        \item ABS EBS and Brake system in general
+    \end{itemize}
+    A very important constrained is that the system needs to run independent of other systems and human interaction. The only interaction that is allowed is the emergency shutdown to stop the system in case of an emergency.
+
+
+\section{Testing Strategy}
+    When developing testing strategies we need to keep in mind that the system developed during this course that will be tested is build on the Turtlebot as a prototype. To test the complete system our testing strategy is to imitate the Formula Student race events and measure the prototypes performance. Before we test the whole system we can run acceptance test on smaller modules as well. Some of those acceptance tests are defined below. \\
+    Acceptance Tests:
+    \begin{enumerate}[label=\arabic*.]
+        \item Test of basic motion controls (accelerate, brake, steer)
+        \item Test of following along a route marked by cones
+        \item Compare the time and trajectory with the optimal trajectory
+        \item Test the emergency shutdown so that the car stops 
+        \item Driving the car in (simulated) rain
+        \item Test the switch between manual and autonomous mode
+        \item Test that the car can carry a driver
+        \item simulate “endangering situations”
+        \item simulate the competitions (events, tests)
+        \item drive the car in dim light
+        \item Power consumption is at max 85 kWh
+    \end{enumerate}
+    
+    \noindent All of the tests can be run in the real world by building a scaled version of the racing track and condition. It is important to note that it might be use full to run simulated tests as well. Simulated tests take less effort and costs. In addition there are several different simulated environments. \\
+    To define further tests such as Integration and unit tests we need more knowledge of the system beforehand. For integration tests at least a rough layout would be necessary and for unit tests we might even need more specific plans.
+\end{document}
+
