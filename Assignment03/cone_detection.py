@@ -34,20 +34,44 @@ def change_bb_callback(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         temp_bbs = []
         # remove bounding box from bbs which should be saved
-        for bb in current_bbs:
+        for label, bb in current_bbs:
             if point_in_rect(x, y, bb):
-                current_bbs.remove(bb)
-                temp_bbs.append(bb)
+                current_bbs.remove((label, bb))
+                temp_bbs.append((label, bb))
                 cv2.rectangle(img, (bb[0], bb[1]), (bb[0] + bb[2], bb[1] + bb[3]), (0, 0, 255), thickness=2)
                 cv2.imshow('img', img)
         # re-add the bounding box if it's clicked on again
-        for bb in current_bbs_bin:
+        for (label, bb) in current_bbs_bin:
             if point_in_rect(x, y, bb):
-                current_bbs_bin.remove(bb)
-                current_bbs.append(bb)
+                current_bbs_bin.remove((label, bb))
+                current_bbs.append((label, bb))
                 cv2.rectangle(img, (bb[0], bb[1]), (bb[0] + bb[2], bb[1] + bb[3]), (255, 255, 255), thickness=2)
                 cv2.imshow('img', img)
         current_bbs_bin.extend(temp_bbs)
+
+def saveBoundingBoxes(bbs, filename):
+    """
+    Save the bbs and their label in the according format in the file.
+
+    :param bbs: list of labeled bounding boxes in the format (label, bb) where
+    bb = (top_left_x, top_left_y, width, height)
+    :return: None
+    """
+    img_width = 640
+    img_height = 480
+
+    if not os.path.exists('data/TrainingLabels'):
+        os.mkdir('data/TrainingLabels')
+
+    with open(f'data/TrainingLabels/{filename}', 'w+') as file:
+        for label, bb in bbs:
+            # adjust format and scale
+            x_center = (bb[0] + bb[2] / 2) / img_width
+            y_center = (bb[1] + bb[3]/2) / img_height
+            width = bb[2] / img_width
+            height = bb[3] / img_height
+            file.write(f"{label} {x_center} {y_center} {width} {height}\n")
+
 
 
 def point_in_rect(x, y, rect):
@@ -117,6 +141,9 @@ def find_bbs_for_colors(img, color_bounds, color_name='', show_img=False):
     bounding_boxes = []
     for c in contours:
         rect = cv2.boundingRect(c)
+        # add a little padding at the top:
+        padding = int(rect[3] * .10)
+        rect = (rect[0], max(rect[1] - padding, 0), rect[2], rect[3] + padding)
         # don't add bb if it's too small
         if rect[2] * rect[3] > 400: bounding_boxes.append(rect)
 
@@ -145,6 +172,8 @@ def main():
                   f"or move images to data/TrainingImages")
             exit(1)
 
+    # create dir
+
     # get global variables
     global current_bbs
     global current_bbs_bin
@@ -167,9 +196,9 @@ def main():
         img = cv2.imread(str(img_path))
 
         # define colors for the bounding boxes
-        bbs_col = [(0, 205, 228),  # yellow
-                   (255, 0, 0),  # blue
-                   (9, 115, 225)]  # orange
+        bbs_col = [(255, 0, 0), # blue
+                   (9, 115, 225),   # orange
+                   (0, 205, 228)]   # yellow
 
         # define the lower and upper bounds of the colors that should be extracted
         yellow_bound = np.array([[36, 40, 40],
@@ -183,11 +212,11 @@ def main():
 
         # normalize the colors to openCV scale
         normalized_col_bounds = [normalize_bound((max_h, max_s, max_v), bound) for bound in
-                                 [yellow_bound, blue_bound, orange_bound]]
+                                 [blue_bound, orange_bound, yellow_bound]]
 
-        for col_bound, bb_col in zip(normalized_col_bounds, bbs_col):
+        for col_bound, bb_col, label in zip(normalized_col_bounds, bbs_col, [0, 1, 2]):
             bbs = find_bbs_for_colors(img, col_bound, color_name=str(bb_col), show_img=False)
-            current_bbs += bbs
+            current_bbs += [(label, bb) for bb in bbs]
 
             for rect in bbs:
                 cv2.rectangle(img, (rect[0], rect[1]), (rect[0] + rect[2], rect[1] + rect[3]), bb_col)
@@ -201,9 +230,10 @@ def main():
             break
         elif pressed_key == ord('s'):
             # bounding boxes are not saved
+            print(f"-> skipped above image")
             pass
         else:
-            # TODO save bounding boxes
+            saveBoundingBoxes(current_bbs, img_path.name[:-3]+'txt')
             pass
 
 
