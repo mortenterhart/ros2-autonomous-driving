@@ -5,7 +5,6 @@ import torch
 from rclpy.node import Node
 from sensor_msgs.msg import Image, CompressedImage
 from cv_bridge import CvBridge, CvBridgeError
-from perception.models.common import DetectMultiBackend
 
 
 class ConeDetectionNode(Node):

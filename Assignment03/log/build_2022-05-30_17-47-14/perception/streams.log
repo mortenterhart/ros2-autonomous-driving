@@ -1,0 +1,21 @@
+[0.479s] Invoking command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/perception': PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/perception build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/install.log --single-version-externally-managed
+[0.699s] running egg_info
+[0.699s] writing ../build/perception/perception.egg-info/PKG-INFO
+[0.700s] writing dependency_links to ../build/perception/perception.egg-info/dependency_links.txt
+[0.700s] writing entry points to ../build/perception/perception.egg-info/entry_points.txt
+[0.700s] writing requirements to ../build/perception/perception.egg-info/requires.txt
+[0.700s] writing top-level names to ../build/perception/perception.egg-info/top_level.txt
+[0.722s] reading manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+[0.722s] writing manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+[0.722s] running build
+[0.723s] running build_py
+[0.723s] running install
+[0.723s] running install_lib
+[0.724s] running install_data
+[0.724s] running install_egg_info
+[0.726s] removing '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception-0.0.0-py3.8.egg-info' (and everything under it)
+[0.726s] Copying ../build/perception/perception.egg-info to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception-0.0.0-py3.8.egg-info
+[0.727s] running install_scripts
+[0.741s] Installing cone_detection script to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/perception
+[0.741s] writing list of installed files to '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/install.log'
+[0.773s] Invoked command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/perception' returned '0': PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/perception build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/install.log --single-version-externally-managed

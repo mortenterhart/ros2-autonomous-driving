@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'cone_detection = perception.cone_detection:main'
+            'cone_detection = perception.cone_detection_node:main'
         ],
     },
 )
