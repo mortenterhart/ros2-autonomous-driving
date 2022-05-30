@@ -1,0 +1,37 @@
+[0.459s] Invoking command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/perception': CONDA_PROMPT_MODIFIER=(yolo) PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/perception build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/install.log --single-version-externally-managed
+[0.616s] running egg_info
+[0.616s] creating ../build/perception/perception.egg-info
+[0.616s] writing ../build/perception/perception.egg-info/PKG-INFO
+[0.616s] writing dependency_links to ../build/perception/perception.egg-info/dependency_links.txt
+[0.617s] writing entry points to ../build/perception/perception.egg-info/entry_points.txt
+[0.617s] writing requirements to ../build/perception/perception.egg-info/requires.txt
+[0.617s] writing top-level names to ../build/perception/perception.egg-info/top_level.txt
+[0.618s] writing manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+[0.641s] reading manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+[0.642s] writing manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+[0.642s] running build
+[0.642s] running build_py
+[0.642s] creating /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build
+[0.642s] creating /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build/lib
+[0.642s] creating /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build/lib/perception
+[0.642s] copying perception/__init__.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build/lib/perception
+[0.642s] copying perception/cone_detection.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build/lib/perception
+[0.642s] running install
+[0.643s] running install_lib
+[0.643s] creating /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception
+[0.643s] copying /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build/lib/perception/__init__.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception
+[0.643s] copying /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build/lib/perception/cone_detection.py -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception
+[0.644s] byte-compiling /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception/__init__.py to __init__.cpython-38.pyc
+[0.644s] byte-compiling /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception/cone_detection.py to cone_detection.cpython-38.pyc
+[0.645s] running install_data
+[0.645s] creating /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/share/ament_index
+[0.645s] creating /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/share/ament_index/resource_index
+[0.645s] creating /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/share/ament_index/resource_index/packages
+[0.645s] copying resource/perception -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/share/ament_index/resource_index/packages
+[0.645s] copying package.xml -> /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/share/perception
+[0.645s] running install_egg_info
+[0.646s] Copying ../build/perception/perception.egg-info to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages/perception-0.0.0-py3.8.egg-info
+[0.647s] running install_scripts
+[0.659s] Installing cone_detection script to /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/perception
+[0.659s] writing list of installed files to '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/install.log'
+[0.677s] Invoked command in '/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/perception' returned '0': CONDA_PROMPT_MODIFIER=(yolo) PYTHONPATH=/home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/perception build --build-base /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/build install --prefix /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/install/perception --record /home/mte/projects/AVAI/allassignments-gruppe-e/Assignment03/build/perception/install.log --single-version-externally-managed

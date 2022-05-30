@@ -1,0 +1,3 @@
+[console_scripts]
+cone_detection = perception.cone_detection:main
+
