@@ -52,4 +52,4 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific files
-Assignment03/data/
+src/perception/data/
