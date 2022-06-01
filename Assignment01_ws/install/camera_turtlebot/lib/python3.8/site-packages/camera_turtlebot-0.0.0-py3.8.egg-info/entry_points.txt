@@ -1,4 +1,0 @@
-[console_scripts]
-camera = camera_turtlebot.camera_node:main
-processing = camera_turtlebot.image_processing_node:main
-

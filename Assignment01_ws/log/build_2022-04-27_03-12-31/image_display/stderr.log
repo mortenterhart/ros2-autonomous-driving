@@ -1,5 +1,0 @@
-  File "/home/nils/allassignments-gruppe-e/Assignment01_ws/install/image_display/lib/python3.8/site-packages/image_display/image_display_node.py", line 40
-    ret = cv2.imwrite(path, str(datetime.now()).replace(' ', '_')+'.jpg'), img_msg)
-                                                                                  ^
-SyntaxError: unmatched ')'
-
