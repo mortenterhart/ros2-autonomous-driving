@@ -1,3 +1,8 @@
+# ROS2 bulk
+build/
+install/
+log/
+
 Assignment03/data/
 
-*.idea
+.idea
