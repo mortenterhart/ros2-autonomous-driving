@@ -1,8 +1,55 @@
-# ROS2 bulk
-build/
+# ROS2 build artifacts
 install/
 log/
+build/
 
+# Colcon custom files
+COLCON_IGNORE
+AMENT_IGNORE
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Python Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignore generated docs
+*.dox
+*.wikidoc
+
+# IDE project files
+.project
+.cproject
+.idea/
+.vscode/
+
+# QtCreator files
+CMakeLists.txt.user
+srv/_*.py
+*.pcd
+*.pyc
+qtcreator-*
+*.user
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific files
 Assignment03/data/
-
-.idea
