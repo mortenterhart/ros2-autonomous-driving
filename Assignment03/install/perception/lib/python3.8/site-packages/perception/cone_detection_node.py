@@ -1,9 +1,11 @@
+from traitlets import Float
 import rclpy
 import cv2
 import os
 import torch
 import torchvision
 from rclpy.node import Node
+from std_msgs.msg import Float32MultiArray, MultiArrayDimension
 from sensor_msgs.msg import Image, CompressedImage
 from cv_bridge import CvBridge, CvBridgeError
 
@@ -14,6 +16,10 @@ class ConeDetectionNode(Node):
         print(f"torch: {torch.__version__} from {torch.__path__}, torchvision: {torchvision.__version__} from {torchvision.__path__}")
         # subscribe to the topic of processed images
         self.subscriber_img_ = self.create_subscription(CompressedImage, '/proc_img', self.detect_cones, 10)
+
+        # Publish bounding boxes
+        self.publisher_bboxes_ = self.create_publisher(Float32MultiArray, '/bounding_boxes', 10)
+
         self.model = torch.load('./models/yolov5.pt')
 
     def detect_cones(self, msg):
@@ -31,6 +37,20 @@ class ConeDetectionNode(Node):
 
         # BGR colors: [blue, orange, yellow]
         cone_colors = [(255, 0, 0), (2, 139, 250), (0, 255, 255)]
+
+        bboxes_msg = Float32MultiArray()
+
+        bboxes_msg.layout.dim.append(MultiArrayDimension())
+        bboxes_msg.layout.dim.append(MultiArrayDimension())
+        bboxes_msg.layout.dim[0].label = 'Bounding Boxes'
+        bboxes_msg.layout.dim[0].size = len(bboxes)
+        bboxes_msg.layout.dim[1].label = 'Coordinates'
+        bboxes_msg.layout.dim[1].size = 6
+
+        bboxes_msg.data = torch.flatten(bboxes).tolist()
+
+        self.publisher_bboxes_.publish(bboxes_msg)
+        print(f'bboxes_msg: {bboxes_msg}, header: {bboxes_msg.header}')
 
         for bbox in bboxes:
             cv2.rectangle(bgr_img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), cone_colors[int(bbox[5])], thickness=2)

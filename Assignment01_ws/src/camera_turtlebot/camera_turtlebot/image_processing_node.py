@@ -40,5 +40,7 @@ def main(args=None):
     rclpy.spin(ImgProcsessingNode())
 
     rclpy.shutdown()
+
+
 if __name__ == '__main__':
     main()
