@@ -1,7 +1,6 @@
-from traitlets import Float
 import rclpy
 import cv2
-import os
+from datetime import datetime
 import torch
 import torchvision
 from rclpy.node import Node
@@ -20,7 +19,7 @@ class ConeDetectionNode(Node):
         # Publish bounding boxes
         self.publisher_bboxes_ = self.create_publisher(Float32MultiArray, '/bounding_boxes', 10)
 
-        self.model = torch.load('./models/yolov5.pt')
+        self.model = torch.load('./src/perception/models/yolov5.pt')
 
     def detect_cones(self, msg):
         # display the image data
@@ -33,7 +32,6 @@ class ConeDetectionNode(Node):
         detection = self.model(rgb_img)
 
         bboxes = detection.xyxy[0]
-        print(f"bboxes: {bboxes}")
 
         # BGR colors: [blue, orange, yellow]
         cone_colors = [(255, 0, 0), (2, 139, 250), (0, 255, 255)]
@@ -50,7 +48,7 @@ class ConeDetectionNode(Node):
         bboxes_msg.data = torch.flatten(bboxes).tolist()
 
         self.publisher_bboxes_.publish(bboxes_msg)
-        print(f'bboxes_msg: {bboxes_msg}, header: {bboxes_msg.header}')
+        print(f"Published {len(bboxes)} bounding boxes at {str(datetime.now())}")
 
         for bbox in bboxes:
             cv2.rectangle(bgr_img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), cone_colors[int(bbox[5])], thickness=2)

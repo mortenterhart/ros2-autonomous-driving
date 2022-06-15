@@ -3,7 +3,6 @@ from rclpy.node import Node
 from rclpy.parameter import Parameter
 from rcl_interfaces.msg import SetParametersResult
 from std_msgs.msg import String
-from vision_msgs.msg import BoundingBox2D
 from sensor_msgs.msg import CompressedImage
 from cv_bridge import CvBridge, CvBridgeError
 import numpy as np
