@@ -11,11 +11,13 @@ class Localization(Node):
         self.subscriber_img_ = self.create_subscription(CompressedImage, '/proc_img', self.received_img,10)
         self.subscriber_bboxes_ = self.create_subscription(Float32MultiArray, '/bounding_boxes', self.received_bbox, 10)
 
-    def received_img():
-        print("Received img")
+    def received_img(self, msg):
+        print("Image:")
+        print(msg.header)
 
-    def received_bbox():
-        print("Received bbox")
+    def received_bbox(self, msg):
+        print("BBOX:")
+        print(msg.header)
 
 
 def main(args=None):
