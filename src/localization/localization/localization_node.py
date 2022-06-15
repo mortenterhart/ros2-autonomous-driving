@@ -1,7 +1,21 @@
 import rclpy
+from rclpy.node import Node
+from std_msgs.msg import Float32MultiArray, MultiArrayDimension
+from sensor_msgs.msg import Image, CompressedImage
 
 class Localization(Node):
-    super().__init__('localization')
+    def __init__(self):
+        super().__init__('localization')
+
+        # Subscribe to image and bbox topic
+        self.subscriber_img_ = self.create_subscription(CompressedImage, '/proc_img', self.received_img,10)
+        self.subscriber_bboxes_ = self.create_subscription(Float32MultiArray, '/bounding_boxes', self.received_bbox, 10)
+
+    def received_img():
+        print("Received img")
+
+    def received_bbox():
+        print("Received bbox")
 
 
 def main(args=None):
