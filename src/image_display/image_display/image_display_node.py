@@ -18,28 +18,35 @@ class ImgDisplayNode(Node):
 
         # set parameters and detect a parameter change
         self.store_imgs = False
+        self.img_path = "imgs"
         self.show_stream = True
         self.declare_parameter("store_imgs", value=self.store_imgs)
+        self.declare_parameter("img_path", value=self.img_path)
         self.declare_parameter("show_stream", value=self.show_stream)
         self.add_on_set_parameters_callback(self.on_param_change)
 
     def display_img_data(self, msg):
         # display the image data
         bridge = CvBridge()
-        img_msg = bridge.compressed_imgmsg_to_cv2(msg)
+        img = bridge.compressed_imgmsg_to_cv2(msg)
 
         if self.show_stream:
-            cv2.imshow("display", img_msg)
+            # Copy the image for display
+            img_display = img.copy()
+
+            # Draw a vertical line in the middle
+            cv2.line(img_display, (img.shape[1]//2, 0), (img.shape[1]//2, img.shape[0]), (0, 255, 0), thickness=2)
+
+            cv2.imshow("display", img_display)
             cv2.waitKey(1)
 
         if self.store_imgs:
-            path = "../imgs"
-            if not os.path.exists(path):
-                os.makedirs(path)
+            if not os.path.exists(self.img_path):
+                os.makedirs(self.img_path)
 
-            cv2.imwrite(os.path.join(path, str(datetime.now()).replace(' ', '_')+'.jpg'), img_msg)
+            cv2.imwrite(os.path.join(self.img_path, str(datetime.now()).replace(' ', '_')+'.jpg'), img)
 
-        print(f"{img_msg.shape}: {str(datetime.now()).split('.')[0]}")
+        print(f"{img.shape}: {str(datetime.now()).split('.')[0]}")
 
     def on_param_change(self, parameters):
         for parameter in parameters:
@@ -55,6 +62,12 @@ class ImgDisplayNode(Node):
                 print(f"changed store_imgs from {self.show_stream} to {show_stream}")
                 self.show_stream = show_stream
                 cv2.destroyAllWindows()
+                return SetParametersResult(successful=True)
+
+            elif parameter.name == "img_path":
+                img_path = parameter.value
+                print(f"Changed img_path from {self.img_path} to {img_path}")
+                self.img_path = img_path
                 return SetParametersResult(successful=True)
 
             else:
