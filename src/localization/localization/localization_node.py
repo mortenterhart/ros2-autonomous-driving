@@ -13,7 +13,7 @@ class Localization(Node):
         super().__init__('localization')
 
         # Subscribe to image and bbox topic
-        self.subscriber_img_ = self.create_subscription(CompressedImage, '/proc_img', self.received_img, 10)
+        # self.subscriber_img_ = self.create_subscription(CompressedImage, '/proc_img', self.received_img, 10)
         self.subscriber_bboxes_ = self.create_subscription(Float32MultiArray, '/bounding_boxes', self.received_bbox, 10)
         qos = QoSProfile(depth=10)
         self.subscriber_scan = self.create_subscription(LaserScan, 'scan', self.received_scan, qos_profile=qos_profile_sensor_data)
@@ -35,41 +35,23 @@ class Localization(Node):
     def received_scan(self, scan):
         if self.start_pos is None:
             return
-        move_vec = self.pos - self.last_pos # movement of the turtlebot
 
         bot_movement = self.pos - self.start_pos
 
-        print(f"bot_movement: {bot_movement}")
-        print(f"pos: {self.pos}")
+        # print(f"bot_movement: {bot_movement}")
+        # print(f"pos: {self.pos}")
 
-        self.last_pos = np.copy(self.pos)
-
-        points_x = np.array(scan.ranges) * np.sin(np.linspace(0, 2 * np.pi, 360))
-        points_y = np.array(scan.ranges) * np.cos(np.linspace(0, 2 * np.pi, 360))
+        # transform the lidar data to 2d points
+        points_x = np.array(scan.ranges) * np.sin(np.flip(np.linspace(0, 2 * np.pi, 360)))
+        points_y = np.array(scan.ranges) * np.cos(np.flip(np.linspace(0, 2 * np.pi, 360)))
         points = np.array([[x,y] for x, y in zip(points_x, points_y) if abs(x) >= 10e-10 and abs(y) >= 10e-10])
-        points -= bot_movement
+
+        # normalize with the movement of the bot (s.t. points are stationary)
+        points += bot_movement
+
+        if len(self.scan_buffer) > 5:
+            self.scan_buffer.pop(0)
         self.scan_buffer.append(points)
-
-        self.points_received += 1
-        if self.points_received == 5:
-            flat = np.concatenate(self.scan_buffer)
-            cluster_labels = DBSCAN(eps=.1, min_samples=2).fit_predict(flat)
-
-            num_clusters = len(np.unique(cluster_labels))
-
-            for idx, label in enumerate(np.unique(cluster_labels)):
-
-                cluster_i = flat[cluster_labels==label]
-                # print(f"flat shape: {flat.shape}")
-
-                # print(f"{np.unique(cluster_labels, return_counts=True)}")
-                # print(flat.shape)
-                cluster_var = np.var(cluster_i, axis=0)
-                print(f"{label} {cluster_var} {cluster_i.shape[0]}")
-                # if np.sum(cluster_var)<0.0005:
-                plt.scatter(cluster_i[:, 0], cluster_i[:, 1], s=5, label=f"{label}") #, c=cluster_labels
-            plt.legend()
-            plt.show()
 
     def receive_odom(self, odom):
         self.pos[0] = odom.pose.pose.position.x
@@ -78,7 +60,7 @@ class Localization(Node):
         if self.start_pos is None:
             self.start_pos = self.pos
 
-        print(f"odom updated: {self.pos}")
+        # print(f"odom updated: {self.pos}")
 
     def compute_cone_angle(self, bbox):
         bbox_center_bottom = (bbox[0] - 0.5, bbox[1] - bbox[3]/2)
@@ -101,8 +83,68 @@ class Localization(Node):
         print(msg.header)
 
     def received_bbox(self, msg):
-        print("BBOX:")
-        print(msg.header)
+        bboxes = np.array(msg.data)
+        bboxes = bboxes.reshape((-1, 6))
+
+        if len(self.scan_buffer) < 5:
+            return
+
+        # get fov of buffer
+        buffer_fov = [np.concatenate((item[-31:], item[:31])) for item in self.scan_buffer]
+
+        # find cluster
+        flat_buffer = np.concatenate(buffer_fov)
+        point_labels = DBSCAN(eps=.1, min_samples=2).fit_predict(flat_buffer)
+        # self.plot_cluster(flat_buffer, point_labels)
+
+
+        # cluster centroids
+        clusters = []
+        cluster_labels = []
+
+        clusters_no_cone = []
+        cluster_labels_no_cone = []
+        for idx, label in enumerate(np.unique(point_labels)):
+            cluster = flat_buffer[point_labels==label]
+            cluster_var = np.var(cluster, axis=0)
+            print(f"custer {idx} - var: {cluster_var} - var_sum: {np.sum(cluster_var)}")
+
+
+            # filter by cluster variance
+            if np.sum(cluster_var)<0.002:
+                clusters.append(cluster)
+                cluster_labels.append(label)
+            else:
+                clusters_no_cone.append(cluster)
+                cluster_labels_no_cone.append(label)
+
+        for cluster, label in zip(clusters, cluster_labels):
+            self.plot_cluster(cluster, label, 1)
+        for cluster, label in zip(clusters_no_cone, cluster_labels_no_cone):
+            self.plot_cluster(cluster, label, .1)
+
+        plt.xlim(-2, 2)
+        plt.ylim(0, 3)
+        plt.legend()
+        plt.show()
+
+        # sensor fusion
+        
+            # make cluster- and bbox length equal
+            # give centroids color of bbx
+
+        # update cone map
+
+
+    def plot_cluster(self, data, label, alpha):
+        # data = points of a single cluster
+
+        cluster_i = data
+        cluster_var = np.var(cluster_i, axis=0)
+        print(f"{label} {cluster_var} {cluster_i.shape[0]}")
+        # if np.sum(cluster_var)<0.0005:
+        plt.scatter(cluster_i[:, 0], cluster_i[:, 1], s=5, alpha=alpha, label=f"{label}") #, c=cluster_labels
+
 
 
 def main(args=None):
