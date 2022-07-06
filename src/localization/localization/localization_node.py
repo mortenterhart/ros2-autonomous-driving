@@ -27,7 +27,8 @@ class Localization(Node):
         self.ref_bbox_height_rel = 0.245833
         self.scan_buffer = []
         self.angle_buffer = []
-        self.points_received = 0
+        #self.points_received = 0
+        self.FOV = 62
 
         bbox_2m = [0.775391, 0.586111, 0.074219, 0.133333]
         bbox_corner_px = self.convert_rel_to_px_bbox(self.transform_center_to_corner_bbox_format(bbox_2m))
@@ -91,7 +92,7 @@ class Localization(Node):
             return
 
         # get fov of buffer
-        buffer_fov = [np.concatenate((item[-31:], item[:31])) for item in self.scan_buffer]
+        buffer_fov = [np.concatenate((item[-self.FOV/2:], item[:self.FOV])) for item in self.scan_buffer]
 
         # find cluster
         flat_buffer = np.concatenate(buffer_fov)
@@ -150,7 +151,7 @@ class Localization(Node):
         # print(f"centroid_angles: {centroid_angles}")
         print(f"cluster_angles: {cluster_angles}")
 
-        fov_px_ratio = 62 / self.img_width
+        fov_px_ratio = self.FOV / self.img_width
 
         centroid_classes = []  # classified centroids (by sensor fusion)
         # print(f"bboxes: {len(bboxes)}, {len(sorted(bboxes, key=lambda bb: bb[3] - bb[1]))}")
