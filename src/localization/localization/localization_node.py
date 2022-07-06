@@ -26,6 +26,7 @@ class Localization(Node):
         self.img_height = 480
         self.ref_bbox_height_rel = 0.245833
         self.scan_buffer = []
+        self.angle_buffer = []
         self.points_received = 0
 
         bbox_2m = [0.775391, 0.586111, 0.074219, 0.133333]
@@ -101,19 +102,25 @@ class Localization(Node):
         # cluster centroids
         clusters = []
         cluster_labels = []
+        cluster_angles = []
 
         clusters_no_cone = []
         cluster_labels_no_cone = []
+
         for idx, label in enumerate(np.unique(point_labels)):
             cluster = flat_buffer[point_labels==label]
+            cluster_indices = np.argwhere(point_labels == label)
+            cluster_degrees = cluster_indices % 62
+            cluster_degrees = np.ones(cluster_degrees.shape) * 62 - cluster_degrees
             cluster_var = np.var(cluster, axis=0)
             print(f"custer {idx} - var: {cluster_var} - var_sum: {np.sum(cluster_var)}")
 
 
             # filter by cluster variance
-            if np.sum(cluster_var)<0.002:
+            if np.sum(cluster_var)<0.002 and label != -1:
                 clusters.append(cluster)
                 cluster_labels.append(label)
+                cluster_angles.append(np.mean(cluster_degrees))
             else:
                 clusters_no_cone.append(cluster)
                 cluster_labels_no_cone.append(label)
@@ -123,18 +130,45 @@ class Localization(Node):
         for cluster, label in zip(clusters_no_cone, cluster_labels_no_cone):
             self.plot_cluster(cluster, label, .1)
 
+        # calc cluster centroids
+        centroids = [np.mean(cluster, axis=0) for cluster in clusters]
+        centroids = np.array(centroids)
+        plt.scatter(centroids[:,0], centroids[:,1], alpha=.1)
+
         plt.xlim(-2, 2)
         plt.ylim(0, 3)
         plt.legend()
-        plt.show()
+
 
         # sensor fusion
-        
+        bb_angles = []
+        # TODO doesn't find the correct angles, check why this is happening...
+        # centroid_distance = np.linalg.norm(centroids - (self.pos - self.start_pos), ord=2)
+        # x_dist_centroid_points = centroids[:, 0] - (self.pos[0] - self.start_pos[0])
+        # centroid_angles = np.degrees(np.arcsin(x_dist_centroid_points / centroid_distance)) + 31
+
+        # print(f"centroid_angles: {centroid_angles}")
+        print(f"cluster_angles: {cluster_angles}")
+
+        fov_px_ratio = 62 / self.img_width
+
+        centroid_classes = []  # classified centroids (by sensor fusion)
+        # print(f"bboxes: {len(bboxes)}, {len(sorted(bboxes, key=lambda bb: bb[3] - bb[1]))}")
+        for bb in sorted(bboxes, key=lambda bb: bb[3] - bb[1], reverse=True):
+            start_angle = bb[0] * fov_px_ratio
+            end_angle = bb[2] * fov_px_ratio
+            bb_angles.append((start_angle, end_angle))
+
+            for centroid, label, angle in zip(centroids, cluster_labels, cluster_angles):
+                if start_angle -.5 <= angle <= end_angle + .5:
+                    centroid_classes.append((label, bb[5]))
+                    # TODO pop centroid afterwards.
             # make cluster- and bbox length equal
             # give centroids color of bbx
-
+        print(f"bb_angles: {bb_angles}")
+        print(f"centroid_classes: {centroid_classes}")
         # update cone map
-
+        plt.show()
 
     def plot_cluster(self, data, label, alpha):
         # data = points of a single cluster
