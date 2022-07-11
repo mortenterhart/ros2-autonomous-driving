@@ -34,6 +34,11 @@ class Localization(Node):
         bbox_corner_px = self.convert_rel_to_px_bbox(self.transform_center_to_corner_bbox_format(bbox_2m))
         print(f"Cone 2m angled distance: {self.compute_cone_distance(bbox_corner_px)}")
 
+
+        # Publisher for known cones
+        self.publisher_cones = self.create_publisher(Float32MultiArray, '/known_cones', 10)
+
+
     def received_scan(self, scan):
         if self.start_pos is None:
             return
