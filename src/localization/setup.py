@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'localization = localization.localization_node:main'
+            'localization = localization.localization_node:main',
             'plot_map = localization.plot_map:main'
         ],
     },
