@@ -33,9 +33,12 @@ class Localization(Node):
 
         bbox_2m = [0.775391, 0.586111, 0.074219, 0.133333]
         bbox_corner_px = self.convert_rel_to_px_bbox(self.transform_center_to_corner_bbox_format(bbox_2m))
-        print(f"Cone 2m angled distance: {self.compute_cone_distance(bbox_corner_px)}")
 
-
+        plt.ion()
+        plt.show()
+        plt.xlim(-2, 2)
+        plt.ylim(0, 3)
+        plt.legend()
 
 
 
@@ -66,7 +69,7 @@ class Localization(Node):
         self.pos[1] = odom.pose.pose.position.y
 
         if self.start_pos is None:
-            self.start_pos = self.pos
+            self.start_pos = np.copy(self.pos)
 
 
     def compute_cone_angle(self, bbox):
@@ -86,8 +89,7 @@ class Localization(Node):
                 rel_bbox[2] * self.img_width, rel_bbox[3] * self.img_height]
 
     def received_img(self, msg):
-        print("Image:")
-        print(msg.header)
+        pass
 
     def received_bbox(self, msg):
         bboxes = np.array(msg.data)
@@ -119,7 +121,7 @@ class Localization(Node):
             cluster_degrees = cluster_indices % 62
             cluster_degrees = np.ones(cluster_degrees.shape) * 62 - cluster_degrees
             cluster_var = np.var(cluster, axis=0)
-            print(f"custer {idx} - var: {cluster_var} - var_sum: {np.sum(cluster_var)}")
+            # print(f"custer {idx} - var: {cluster_var} - var_sum: {np.sum(cluster_var)}")
 
 
             # filter by cluster variance
@@ -139,13 +141,9 @@ class Localization(Node):
         # calc cluster centroids
         centroids = [np.mean(cluster, axis=0) for cluster in clusters]
         centroids = np.array(centroids)
-        print(centroids.shape)
+        # print(centroids.shape)
         if len(centroids) != 0:
             plt.scatter(centroids[:,0], centroids[:,1], alpha=.1)
-
-        plt.xlim(-2, 2)
-        plt.ylim(0, 3)
-        plt.legend()
 
 
         # sensor fusion
@@ -162,13 +160,15 @@ class Localization(Node):
 
         centroid_classes = []  # classified centroids (by sensor fusion)
         # sort centroids by distance to the bot. use the sorted indices.
+        if(len(centroids) == 0):
+            return
         sorted_centroid_indices = np.argsort(np.linalg.norm(centroids - self.pos, ord=2, axis=1))
         # bool map whether a centroid is assigned to a bounding box
         used_centroids = np.zeros((len(sorted_centroid_indices)))
 
-        print(f"centroid: {centroids}")
-        print(f"centroid indices={sorted_centroid_indices}")
-        print(f"sorted bbs: {sorted(bboxes, key=lambda bb: bb[3] - bb[1], reverse=True)}")
+        # print(f"centroid: {centroids}")
+        # print(f"centroid indices={sorted_centroid_indices}")
+        # print(f"sorted bbs: {sorted(bboxes, key=lambda bb: bb[3] - bb[1], reverse=True)}")
 
         # print(f"bboxes: {len(bboxes)}, {len(sorted(bboxes, key=lambda bb: bb[3] - bb[1]))}")
         for bb in sorted(bboxes, key=lambda bb: bb[3] - bb[1], reverse=True):
@@ -184,10 +184,11 @@ class Localization(Node):
 
 
         print(f"bb_angles: {bb_angles}")
-        print(f"centroid_classes: {centroid_classes}")
+        print(f"used_centroids: {used_centroids}")
+        # print(f"centroid_classes: {centroid_classes}")
 
         detected_cones = np.empty((len(centroid_classes), 3))
-        print(f"{detected_cones.shape=}")
+        # print(f"{detected_cones.shape=}")
         for i, (_, label, centroid) in enumerate(centroid_classes):
             detected_cones[i] = label, centroid[0], centroid[1]
 
@@ -205,10 +206,14 @@ class Localization(Node):
 
         self.publisher_cones.publish(cones_msg)
         # update cone map
+        plt.draw()
+        plt.pause(0.001)
         # plt.show()
 
     def plot_cluster(self, data, label, alpha):
         # data = points of a single cluster
+        if len(data) == 0:
+            return
 
         cluster_i = data
         cluster_var = np.var(cluster_i, axis=0)
