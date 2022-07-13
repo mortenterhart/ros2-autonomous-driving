@@ -200,7 +200,8 @@ class Localization(Node):
         cones_msg.layout.dim[1].label = 'label,x,y'
         cones_msg.layout.dim[1].size = 3
 
-        cones_msg.data = detected_cones.flatten().tolist()
+        # Send robot position with label -1 first, then the detected cones
+        cones_msg.data = [-1.0, self.pos[0], self.pos[1]] + detected_cones.flatten().tolist()
 
         self.publisher_cones.publish(cones_msg)
         # update cone map

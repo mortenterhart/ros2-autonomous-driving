@@ -19,7 +19,10 @@ class Plot_map(Node):
 
     def receive_cones(self, msg):
         data = np.array(msg.data).reshape((-1, msg.layout.dim[1].size))
-        plt.scatter(data[:, 1], data[:, 2])
+        plt.scatter(data[0, 1], data[0, 2], c='red')
+
+        cone_colors = ['blue', 'orange', 'yellow']
+        plt.scatter(data[1:, 1], data[1:, 2], c=[cone_colors[int(i)] for i in data[1:, 0]])
         plt.draw()
         plt.pause(0.001)
         print(msg)
