@@ -13,8 +13,8 @@ class Plot_map(Node):
 
         self.cone_buffer = []
         self.BUFFER_LENGTH = 5
-        self.TRACKING_THRESHOLD_X = 0.1
-        self.TRACKING_THRESHOLD_Y = 0.1
+        self.TRACKING_THRESHOLD_X = 0.15
+        self.TRACKING_THRESHOLD_Y = 0.15
         self.cones = []
 
         self.robot_pos = [0.0, 0.0]
@@ -50,7 +50,7 @@ class Plot_map(Node):
 
         # detect cones that appear in all buffer-states
         for cone in self.cone_buffer[0]:
-            cone_positions = [[cone[1],cone[2]]]
+            cone_positions = [[cone[1], cone[2]]]
             no_cone_found = False
 
             # compare to other cone-set for matching pos
@@ -78,33 +78,38 @@ class Plot_map(Node):
 
             # cone in all buffers found
             cone_pos = np.mean(cone_positions, axis=0)
-            new_cones.append(np.concatenate(cone[0], cone_pos))
+            new_cones.append(np.array([cone[0], cone_pos[0], cone_pos[1]]))
 
         # compare to cones on the map
-        for new_cone in new_cones:
+        for i, new_cone in enumerate(new_cones):
             for old_cone in self.cones:
                 # compare label/position
                 label_matching = int(new_cone[0]) == int(old_cone[0])
                 x_matching = old_cone[1] > new_cone[1] - self.TRACKING_THRESHOLD_X and old_cone[1] < new_cone[1] + self.TRACKING_THRESHOLD_X
-                x_matching = old_cone[2] > new_cone[2] - self.TRACKING_THRESHOLD_Y and old_cone[2] < new_cone[2] + self.TRACKING_THRESHOLD_Y
+                y_matching = old_cone[2] > new_cone[2] - self.TRACKING_THRESHOLD_Y and old_cone[2] < new_cone[2] + self.TRACKING_THRESHOLD_Y
                 if label_matching and x_matching and y_matching:
-                    new_cones.remove(new_cone)
+                    new_cones.pop(i)
                     break
 
         # add new cones to map
         self.cones.extend(new_cones)
 
     def plot_cones(self):
+        if len(self.cones) == 0:
+            return
+
         # plot robot
         plt.scatter(self.robot_pos[0], self.robot_pos[1], c='red')
 
         # plot cones
         cone_colors = ['blue', 'orange', 'yellow']
-        plt.scatter(self.cones[:, 1], self.cones[:, 2], c=[cone_colors[int(i)] for i in self.cones[1:, 0]])
+        cones_np = np.array(self.cones)
+        print(f'{cones_np=}')
+        plt.scatter(cones_np[:, 1], cones_np[:, 2], c=[cone_colors[int(i)] for i in cones_np[:, 0]])
 
         plt.draw()
         plt.pause(0.001)
-        print(msg)
+
 
 def main(args=None):
     rclpy.init(args=args)
