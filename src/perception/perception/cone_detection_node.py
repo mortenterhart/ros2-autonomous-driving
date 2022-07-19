@@ -19,7 +19,11 @@ class ConeDetectionNode(Node):
         # Publish bounding boxes
         self.publisher_bboxes_ = self.create_publisher(Float32MultiArray, '/bounding_boxes', 10)
 
-        self.model = torch.load('./src/perception/models/yolov5.pt', map_location=torch.device('cpu'))
+        # Load trained model from file
+        self.model = torch.load('./src/perception/models/yolov5.pt', map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
+
+        # Set confidence threshold to 90%
+        self.model.conf = 0.9
 
     def detect_cones(self, msg):
         # display the image data
