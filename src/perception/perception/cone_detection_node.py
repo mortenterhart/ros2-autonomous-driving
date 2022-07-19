@@ -33,6 +33,15 @@ class ConeDetectionNode(Node):
 
         bboxes = detection.xyxy[0]
 
+
+        print(f"{msg.header.stamp.sec=}")
+        timestamp = torch.ones([1, 6]) * -1
+        timestamp[0, 0] = msg.header.stamp.sec
+        timestamp[0, 1] = msg.header.stamp.nanosec
+
+        bboxes = torch.cat((timestamp, bboxes))
+
+
         # BGR colors: [blue, orange, yellow]
         cone_colors = [(255, 0, 0), (2, 139, 250), (0, 255, 255)]
 

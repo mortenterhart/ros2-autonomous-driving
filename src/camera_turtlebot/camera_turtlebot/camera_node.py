@@ -9,6 +9,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import numpy as np
 from datetime import datetime
+import time
 
 class Camera(Node):
 
@@ -32,6 +33,9 @@ class Camera(Node):
 
         try:
             msg = bridge.cv2_to_imgmsg(frame)
+            curr_time = time.time()
+            msg.header.stamp.sec = int(curr_time)
+            msg.header.stamp.nanosec = int(str(curr_time - int(curr_time)).split('.')[1][:9])
             self.publisher_.publish(msg)
             print(f"send new img {str(datetime.now()).split('.')[0]}")
 

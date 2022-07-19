@@ -20,8 +20,9 @@ class ImgProcsessingNode(Node):
         img = self.bridge.imgmsg_to_cv2(msg)
 
         # Convert image to compressed image
-        compressed_image = self.bridge.cv2_to_compressed_imgmsg(img)        
-
+        compressed_image = self.bridge.cv2_to_compressed_imgmsg(img)
+        compressed_image.header.stamp.sec = msg.header.stamp.sec
+        compressed_image.header.stamp.nanosec = msg.header.stamp.nanosec
         # Publish compressed image
         self.publisher_.publish(compressed_image)
 
