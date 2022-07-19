@@ -25,6 +25,7 @@ class NpQueue():
         if self.currSize < self.maxQLen:
             self.currSize += 1
 
+
 def header_to_float_stamp(header):
     return float(f"{header.stamp.sec}.{header.stamp.nanosec}")
 
@@ -32,12 +33,13 @@ def header_to_float_stamp(header):
 class Localization(Node):
     def __init__(self):
         super().__init__('localization')
-        qos = QoSProfile(depth=10)
 
         # Subscribe to image and bbox topic
         self.subscriber_bboxes_ = self.create_subscription(Float32MultiArray, '/bounding_boxes', self.received_bbox, 10)
-        self.subscriber_scan = self.create_subscription(LaserScan, 'scan', self.received_scan, qos_profile=qos_profile_sensor_data)
-        self.subscriber_odom = self.create_subscription(Odometry, 'odom', self.receive_odom, qos_profile=qos_profile_sensor_data)
+        self.subscriber_scan = self.create_subscription(LaserScan, 'scan', self.received_scan,
+                                                        qos_profile=qos_profile_sensor_data)
+        self.subscriber_odom = self.create_subscription(Odometry, 'odom', self.receive_odom,
+                                                        qos_profile=qos_profile_sensor_data)
         # Publisher for known cones
         self.publisher_cones = self.create_publisher(Float32MultiArray, '/known_cones', 10)
 
@@ -47,7 +49,7 @@ class Localization(Node):
         self.orientation = 0
         self.img_width = 640
         self.img_height = 480
-        self.scan_buffer = NpQueue(30, 721)   # buffer for single
+        self.scan_buffer = NpQueue(30, 721)  # buffer for single
         self.odom_buffer = NpQueue(30, 4)
         self.angle_buffer = []
         self.FOV = 62
@@ -59,12 +61,11 @@ class Localization(Node):
         plt.ylim(0, 3)
         plt.legend()
 
-
     def lidar_data_to_point_cloud(self, ranges):
         # ranges are indexed by angle, and describe the distance until the lidar hit an objrct.
         points_x = np.array(ranges) * np.sin(np.flip(np.linspace(0, 2 * np.pi, 360)))
         points_y = np.array(ranges) * np.cos(np.flip(np.linspace(0, 2 * np.pi, 360)))
-        points = np.array([[x,y] for x, y in zip(points_x, points_y)])
+        points = np.array([[x, y] for x, y in zip(points_x, points_y)])
 
         return points
 
@@ -76,16 +77,16 @@ class Localization(Node):
         pos = odom[:2]
         orientation = odom[2]
 
-        # translation
-        bot_movement = pos - self.start_pos # self.pos - self.start_pos
-        points += bot_movement
-
         # rotation
-        angle = orientation - self.start_orientation # self.orientation - self.start_orientation
+        angle = orientation - self.start_orientation  # self.orientation - self.start_orientation
         angle = -angle
         c, s = np.cos(angle), np.sin(angle)
         R = np.array(((c, -s), (s, c)))
         points = points @ R
+
+        # translation
+        bot_movement = pos - self.start_pos  # self.pos - self.start_pos
+        points += bot_movement
 
         print(f"angle={angle * 180 / np.pi}")
 
@@ -110,12 +111,12 @@ class Localization(Node):
         return np.concatenate([arr, np.array([stamp])])
 
     def receive_odom(self, odom):
-        self.pos[0] = odom.pose.pose.position.x
-        self.pos[1] = odom.pose.pose.position.y
+        self.pos[0] = -odom.pose.pose.position.y
+        self.pos[1] = odom.pose.pose.position.x
 
         self.orientation = euler_from_quaternion(
-            odom.pose.pose.orientation.x,
             odom.pose.pose.orientation.y,
+            odom.pose.pose.orientation.x,
             odom.pose.pose.orientation.z,
             odom.pose.pose.orientation.w
         )[2]
@@ -139,7 +140,7 @@ class Localization(Node):
 
         # get the synchronized scan slices
         scan_idx = np.argmin(np.abs(self.scan_buffer.q[:, -1] - stamp))
-        scans = self.scan_buffer.q[scan_idx:scan_idx+5, :-1].reshape(-1, 360, 2)
+        scans = self.scan_buffer.q[scan_idx:scan_idx + 5, :-1].reshape(-1, 360, 2)
         print(self.scan_buffer.q)
         print(f"{scan_idx}")
         print(f"{self.scan_buffer.q.shape=}")
@@ -147,13 +148,12 @@ class Localization(Node):
         print(scans.shape)
 
         # get fov of buffer
-        buffer_fov = [np.concatenate((item[int(-self.FOV/2):], item[:int(self.FOV/2)])) for item in scans]
+        buffer_fov = [np.concatenate((item[int(-self.FOV / 2):], item[:int(self.FOV / 2)])) for item in scans]
 
         # find cluster
         flat_buffer = np.concatenate(buffer_fov)
         point_labels = DBSCAN(eps=.1, min_samples=2).fit_predict(flat_buffer)
         # self.plot_cluster(flat_buffer, point_labels)
-
 
         # cluster centroids
         clusters = []
@@ -164,17 +164,16 @@ class Localization(Node):
         cluster_labels_no_cone = []
 
         for idx, label in enumerate(np.unique(point_labels)):
-            cluster = flat_buffer[point_labels==label]
+            cluster = flat_buffer[point_labels == label]
             cluster_indices = np.argwhere(point_labels == label)
             cluster_degrees = cluster_indices % self.FOV
             cluster_degrees = np.ones(cluster_degrees.shape) * self.FOV - cluster_degrees
             cluster_var = np.var(cluster, axis=0)
             # print(f"custer {idx} - var: {cluster_var} - var_sum: {np.sum(cluster_var)}")
 
-
             # TODO remove the cluster at (0,0) -> the cluster of points where no object was hit
             # filter by cluster variance
-            if np.sum(cluster_var)<self.VAR_THRESHOLD and label != -1:
+            if np.sum(cluster_var) < self.VAR_THRESHOLD and label != -1:
                 clusters.append(cluster)
                 cluster_labels.append(label)
                 cluster_angles.append(np.mean(cluster_degrees))
@@ -192,8 +191,7 @@ class Localization(Node):
         centroids = np.array(centroids)
         # print(centroids.shape)
         if len(centroids) != 0:
-            plt.scatter(centroids[:,0], centroids[:,1], alpha=.1)
-
+            plt.scatter(centroids[:, 0], centroids[:, 1], alpha=.1)
 
         # sensor fusion
         bb_angles = []
@@ -205,7 +203,7 @@ class Localization(Node):
 
         centroid_classes = []  # classified centroids (by sensor fusion)
         # sort centroids by distance to the bot. use the sorted indices.
-        if(len(centroids) == 0):
+        if (len(centroids) == 0):
             return
         sorted_centroid_indices = np.argsort(np.linalg.norm(centroids - self.pos, ord=2, axis=1))
         # bool map whether a centroid is assigned to a bounding box
@@ -222,7 +220,6 @@ class Localization(Node):
                     centroid_classes.append((cluster_labels[idx], bb[5], centroids[idx]))
                     used_centroids[idx] = 1
                     break
-
 
         print(f"bb_angles: {bb_angles}")
         # print(f"used_centroids: {used_centroids}")
@@ -243,7 +240,8 @@ class Localization(Node):
         cones_msg.layout.dim[1].size = 3
 
         # Send robot position with label -1 first, then the detected cones
-        cones_msg.data = [-1.0, self.pos[0], self.pos[1]] + detected_cones.flatten().tolist()
+        cones_msg.data = [-1.0, self.pos[0] - self.start_pos[0],
+                          self.pos[1] - self.start_pos[1]] + detected_cones.flatten().tolist()
 
         self.publisher_cones.publish(cones_msg)
         # update cone map
@@ -261,29 +259,30 @@ class Localization(Node):
         # print(f"{label} {cluster_var} {cluster_i.shape[0]}")
         # if np.sum(cluster_var)<0.0005:
         if len(cluster_i) != 0:
-            plt.scatter(cluster_i[:, 0], cluster_i[:, 1], s=5, alpha=alpha, label=f"{label}") #, c=cluster_labels
+            plt.scatter(cluster_i[:, 0], cluster_i[:, 1], s=5, alpha=alpha, label=f"{label}")  # , c=cluster_labels
+
 
 def euler_from_quaternion(x, y, z, w):
-        """
-        Convert a quaternion into euler angles (roll, pitch, yaw)
-        roll is rotation around x in radians (counterclockwise)
-        pitch is rotation around y in radians (counterclockwise)
-        yaw is rotation around z in radians (counterclockwise)
-        """
-        t0 = +2.0 * (w * x + y * z)
-        t1 = +1.0 - 2.0 * (x * x + y * y)
-        roll_x = math.atan2(t0, t1)
+    """
+    Convert a quaternion into euler angles (roll, pitch, yaw)
+    roll is rotation around x in radians (counterclockwise)
+    pitch is rotation around y in radians (counterclockwise)
+    yaw is rotation around z in radians (counterclockwise)
+    """
+    t0 = +2.0 * (w * x + y * z)
+    t1 = +1.0 - 2.0 * (x * x + y * y)
+    roll_x = math.atan2(t0, t1)
 
-        t2 = +2.0 * (w * y - z * x)
-        t2 = +1.0 if t2 > +1.0 else t2
-        t2 = -1.0 if t2 < -1.0 else t2
-        pitch_y = math.asin(t2)
+    t2 = +2.0 * (w * y - z * x)
+    t2 = +1.0 if t2 > +1.0 else t2
+    t2 = -1.0 if t2 < -1.0 else t2
+    pitch_y = math.asin(t2)
 
-        t3 = +2.0 * (w * z + x * y)
-        t4 = +1.0 - 2.0 * (y * y + z * z)
-        yaw_z = math.atan2(t3, t4)
+    t3 = +2.0 * (w * z + x * y)
+    t4 = +1.0 - 2.0 * (y * y + z * z)
+    yaw_z = math.atan2(t3, t4)
 
-        return roll_x, pitch_y, yaw_z # in radians
+    return roll_x, pitch_y, yaw_z  # in radians
 
 
 def main(args=None):
