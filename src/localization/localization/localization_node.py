@@ -79,17 +79,15 @@ class Localization(Node):
         orientation = odom[2]
 
         # rotation
-        angle = orientation - self.start_orientation  # self.orientation - self.start_orientation
+        angle = orientation - self.start_orientation
         angle = -angle
         c, s = np.cos(angle), np.sin(angle)
         R = np.array(((c, -s), (s, c)))
         points = points @ R
 
         # translation
-        bot_movement = pos - self.start_pos  # self.pos - self.start_pos
+        bot_movement = pos - self.start_pos
         points += bot_movement
-
-        print(f"angle={angle * 180 / np.pi}")
 
         return points
 
@@ -157,11 +155,6 @@ class Localization(Node):
         # get the synchronized scan slices
         scan_idx = np.argmin(np.abs(self.scan_buffer.q[:, -1] - stamp))
         scans = self.scan_buffer.q[scan_idx:scan_idx + 5, :-1].reshape(-1, 360, 2)
-        print(self.scan_buffer.q)
-        print(f"{scan_idx}")
-        print(f"{self.scan_buffer.q.shape=}")
-        print(f"{self.scan_buffer.q[scan_idx-4:scan_idx+1, :-1]=}")
-        print(scans.shape)
 
         # get fov of buffer
         buffer_fov = [np.concatenate((item[int(-self.FOV / 2):], item[:int(self.FOV / 2)])) for item in scans]
@@ -169,7 +162,6 @@ class Localization(Node):
         # find cluster
         flat_buffer = np.concatenate(buffer_fov)
         point_labels = DBSCAN(eps=.1, min_samples=2).fit_predict(flat_buffer)
-        # self.plot_cluster(flat_buffer, point_labels)
 
         # cluster centroids
         clusters = []
@@ -185,9 +177,7 @@ class Localization(Node):
             cluster_degrees = cluster_indices % self.FOV
             cluster_degrees = np.ones(cluster_degrees.shape) * self.FOV - cluster_degrees
             cluster_var = np.var(cluster, axis=0)
-            # print(f"custer {idx} - var: {cluster_var} - var_sum: {np.sum(cluster_var)}")
 
-            # TODO remove the cluster at (0,0) -> the cluster of points where no object was hit
             # filter by cluster variance
             if np.sum(cluster_var) < self.VAR_THRESHOLD and label != -1:
                 clusters.append(cluster)
@@ -202,18 +192,15 @@ class Localization(Node):
         for cluster, label in zip(clusters_no_cone, cluster_labels_no_cone):
             self.plot_cluster(cluster, label, .1)
 
-        # calc cluster centroids
-        centroids = [np.mean(cluster, axis=0) for cluster in clusters]
+        # calc cluster centroids; remove the one at (0,0) since this are the lidar rays which didnt hit
+        centroids = [np.mean(cluster, axis=0) for cluster in clusters and np.mean(cluster) > 0.01]
         centroids = np.array(centroids)
-        # print(centroids.shape)
+
         if len(centroids) != 0:
             plt.scatter(centroids[:, 0], centroids[:, 1], alpha=.1)
 
         # sensor fusion
         bb_angles = []
-
-        # print(f"centroid_angles: {centroid_angles}")
-        print(f"cluster_angles: {cluster_angles}")
 
         fov_px_ratio = self.FOV / self.img_width
 
@@ -225,7 +212,6 @@ class Localization(Node):
         # bool map whether a centroid is assigned to a bounding box
         used_centroids = np.zeros((len(sorted_centroid_indices)))
 
-        # print(f"bboxes: {len(bboxes)}, {len(sorted(bboxes, key=lambda bb: bb[3] - bb[1]))}")
         for bb in sorted(bboxes, key=lambda bb: bb[3] - bb[1], reverse=True):
             start_angle = bb[0] * fov_px_ratio
             end_angle = bb[2] * fov_px_ratio
@@ -237,12 +223,7 @@ class Localization(Node):
                     used_centroids[idx] = 1
                     break
 
-        print(f"bb_angles: {bb_angles}")
-        # print(f"used_centroids: {used_centroids}")
-        # print(f"centroid_classes: {centroid_classes}")
-
         detected_cones = np.empty((len(centroid_classes), 3))
-        # print(f"{detected_cones.shape=}")
         for i, (_, label, centroid) in enumerate(centroid_classes):
             detected_cones[i] = label, centroid[0], centroid[1]
 
@@ -253,16 +234,16 @@ class Localization(Node):
         cones_msg.layout.dim[0].label = 'Detected Cones'
         cones_msg.layout.dim[0].size = len(detected_cones)
         cones_msg.layout.dim[1].label = 'label,x,y'
+
         cones_msg.layout.dim[1].size = 3
 
-        # Send robot position with label -1 first, then the detected cones
         cones_msg.data = detected_cones.flatten().tolist()
 
         self.publisher_cones.publish(cones_msg)
+        
         # update cone map
         plt.draw()
         plt.pause(0.001)
-        # plt.show()
 
     def plot_cluster(self, data, label, alpha):
         # data = points of a single cluster
@@ -271,8 +252,7 @@ class Localization(Node):
 
         cluster_i = data
         cluster_var = np.var(cluster_i, axis=0)
-        # print(f"{label} {cluster_var} {cluster_i.shape[0]}")
-        # if np.sum(cluster_var)<0.0005:
+
         if len(cluster_i) != 0:
             plt.scatter(cluster_i[:, 0], cluster_i[:, 1], s=5, alpha=alpha, label=f"{label}")  # , c=cluster_labels
 
