@@ -47,7 +47,7 @@ class MappingNode(Node):
         self.cone_buffer = FlexibleQueue(self.BUFFER_LENGTH)
         self.known_cones = []
 
-        # Robot position
+        # Save robot positions
         self.robot_pos = []
 
         # plot settings
@@ -59,7 +59,7 @@ class MappingNode(Node):
 
     def receive_robot_pos(self, msg):
         # Set current robot position for plotting
-        self.robot_pos = np.array(msg.data)
+        self.robot_pos = [np.array(msg.data)]
 
     def receive_cones(self, msg):
         potential_cones = np.array(msg.data).reshape((-1, msg.layout.dim[1].size))
@@ -149,14 +149,18 @@ class MappingNode(Node):
         return distance < self.TRACKING_RADIUS
 
     def plot_cones(self):
-        # Plot robot position
-        plt.scatter(self.robot_pos[0], self.robot_pos[1], c='red')
+        # Clear plot first
+        plt.clf()
+
+        # Plot robot positions
+        robot_pos = np.array(self.robot_pos)
+        plt.scatter(robot_pos[:, 0], robot_pos[:, 1], c='red')
 
         # Plot known cone positions, if any
         if len(self.known_cones) > 0:
             cone_colors = ['blue', 'orange', 'gold']
-            cones_np = np.array(self.known_cones)
-            plt.scatter(cones_np[:, 1], cones_np[:, 2], c=[cone_colors[int(i)] for i in cones_np[:, 0]])
+            known_cones = np.array(self.known_cones)
+            plt.scatter(known_cones[:, 1], known_cones[:, 2], c=[cone_colors[int(i)] for i in known_cones[:, 0]])
 
         plt.draw()
         plt.pause(0.001)
