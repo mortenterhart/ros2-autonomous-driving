@@ -149,16 +149,14 @@ class MappingNode(Node):
         return distance < self.TRACKING_RADIUS
 
     def plot_cones(self):
-        if len(self.known_cones) == 0:
-            return
-
-        # plot robot
+        # Plot robot position
         plt.scatter(self.robot_pos[0], self.robot_pos[1], c='red')
 
-        # plot cones
-        cone_colors = ['blue', 'orange', 'gold']
-        cones_np = np.array(self.known_cones)
-        plt.scatter(cones_np[:, 1], cones_np[:, 2], c=[cone_colors[int(i)] for i in cones_np[:, 0]])
+        # Plot known cone positions, if any
+        if len(self.known_cones) > 0:
+            cone_colors = ['blue', 'orange', 'gold']
+            cones_np = np.array(self.known_cones)
+            plt.scatter(cones_np[:, 1], cones_np[:, 2], c=[cone_colors[int(i)] for i in cones_np[:, 0]])
 
         plt.draw()
         plt.pause(0.001)
