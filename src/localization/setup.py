@@ -21,7 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'localization = localization.localization_node:main',
-            'plot_map = localization.plot_map:main'
+            'mapping = localization.mapping_node:main'
         ],
     },
 )

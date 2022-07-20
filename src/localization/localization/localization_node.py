@@ -30,7 +30,7 @@ def header_to_float_stamp(header):
     return float(f"{header.stamp.sec}.{header.stamp.nanosec}")
 
 
-class Localization(Node):
+class LocalizationNode(Node):
     def __init__(self):
         super().__init__('localization')
 
@@ -282,7 +282,7 @@ def euler_from_quaternion(x, y, z, w):
 
 def main(args=None):
     rclpy.init(args=args)
-    rclpy.spin(Localization())
+    rclpy.spin(LocalizationNode())
 
     rclpy.shutdown()
 
