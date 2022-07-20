@@ -41,7 +41,7 @@ class Localization(Node):
         self.subscriber_odom = self.create_subscription(Odometry, 'odom', self.receive_odom,
                                                         qos_profile=qos_profile_sensor_data)
         # Publisher for known cones
-        self.publisher_cones = self.create_publisher(Float32MultiArray, '/known_cones', 10)
+        self.publisher_cones = self.create_publisher(Float32MultiArray, '/potential_cones', 10)
         self.publisher_pos = self.create_publisher(Float32MultiArray, '/robot_pos', 10)
 
         self.start_pos = None
