@@ -156,7 +156,7 @@ class MappingNode(Node):
         plt.scatter(self.robot_pos[0], self.robot_pos[1], c='red')
 
         # plot cones
-        cone_colors = ['blue', 'orange', 'yellow']
+        cone_colors = ['blue', 'orange', 'gold']
         cones_np = np.array(self.known_cones)
         plt.scatter(cones_np[:, 1], cones_np[:, 2], c=[cone_colors[int(i)] for i in cones_np[:, 0]])
 
