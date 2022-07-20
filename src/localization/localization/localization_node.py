@@ -42,6 +42,7 @@ class Localization(Node):
                                                         qos_profile=qos_profile_sensor_data)
         # Publisher for known cones
         self.publisher_cones = self.create_publisher(Float32MultiArray, '/known_cones', 10)
+        self.publisher_pos = self.create_publisher(Float32MultiArray, '/robot_pos', 10)
 
         self.start_pos = None
         self.pos = np.array([0, 0], dtype=float)
@@ -127,6 +128,21 @@ class Localization(Node):
         if self.start_pos is None:
             self.start_pos = np.copy(self.pos)
             self.start_orientation = self.orientation
+
+        pos_msg = Float32MultiArray()
+
+        pos_msg.layout.dim.append(MultiArrayDimension())
+        pos_msg.layout.dim.append(MultiArrayDimension())
+        pos_msg.layout.dim[0].label = 'Robot position'
+        pos_msg.layout.dim[0].size = 1
+        pos_msg.layout.dim[1].label = 'x,y'
+        pos_msg.layout.dim[1].size = 2
+
+        # Send robot position with label -1 first, then the detected cones
+        pos_msg.data = [self.pos[0] - self.start_pos[0],
+                        self.pos[1] - self.start_pos[1]]
+
+        self.publisher_pos.publish(pos_msg)
 
     def received_bbox(self, msg):
         bboxes = np.array(msg.data)
@@ -240,8 +256,7 @@ class Localization(Node):
         cones_msg.layout.dim[1].size = 3
 
         # Send robot position with label -1 first, then the detected cones
-        cones_msg.data = [-1.0, self.pos[0] - self.start_pos[0],
-                          self.pos[1] - self.start_pos[1]] + detected_cones.flatten().tolist()
+        cones_msg.data = detected_cones.flatten().tolist()
 
         self.publisher_cones.publish(cones_msg)
         # update cone map
