@@ -240,7 +240,7 @@ class Localization(Node):
         cones_msg.data = detected_cones.flatten().tolist()
 
         self.publisher_cones.publish(cones_msg)
-        
+
         # update cone map
         plt.draw()
         plt.pause(0.001)
