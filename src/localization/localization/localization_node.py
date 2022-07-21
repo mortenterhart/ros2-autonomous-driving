@@ -193,7 +193,7 @@ class LocalizationNode(Node):
             self.plot_cluster(cluster, label, .1)
 
         # calc cluster centroids; remove the one at (0,0) since this are the lidar rays which didnt hit
-        centroids = [np.mean(cluster, axis=0) for cluster in clusters and np.mean(cluster) > 0.01]
+        centroids = [np.mean(cluster, axis=0) for cluster in clusters if np.mean(cluster) > 0.01]
         centroids = np.array(centroids)
 
         if len(centroids) != 0:
