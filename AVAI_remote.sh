@@ -16,4 +16,4 @@ mkdir -p log
 
 ros2 run perception cone_detection > log/log_cone_detection.txt 2>&1 &    # start cone detection
 ros2 run localization localization > log/log_localization.txt 2>&1 &      # start localization node
-ros2 run localization mapping > log/log_map_detection.txt 2>&1 &         # start map
+ros2 run localization mapping > log/log_map_detection.txt 2>&1 &          # start map
