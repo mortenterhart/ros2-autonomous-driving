@@ -23,6 +23,6 @@ localization_pid="$!"
 ros2 run localization mapping > log/log_map_detection.txt 2>&1 &          # start map
 mapping_pid="$!"
 
-trap "kill -9 $perception_pid $localization_pid $mapping_pid" SIGINT SIGTERM
+trap "kill $perception_pid $localization_pid $mapping_pid" SIGINT SIGTERM
 
 wait "$perception_pid" "$localization_pid" "$mapping_pid"
