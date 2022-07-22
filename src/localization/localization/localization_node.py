@@ -69,6 +69,9 @@ class LocalizationNode(Node):
 
         return points
 
+    def remove_lidar_zero_points(self, points):
+        return np.where(points.mean(axis=0) > 0.01, points, 1e6)
+
     def transform_points(self, points, stamp):
         # get the correct odom data depending on timestamp
         odom_idx = np.argmin(np.abs(self.odom_buffer.q[:, -1] - stamp))
@@ -97,6 +100,9 @@ class LocalizationNode(Node):
         stamp = header_to_float_stamp(scan.header)
         # transform the lidar data to 2d points
         points = self.lidar_data_to_point_cloud(scan.ranges)
+
+        # Remove the zero points from lidar
+        # points = self.remove_lidar_zero_points(points)
 
         # normalize with the movement of the bot (s.t. points are stationary)
         points = self.transform_points(points, stamp)
