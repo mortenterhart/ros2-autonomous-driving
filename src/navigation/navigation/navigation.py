@@ -12,7 +12,7 @@ class Navigation(Node):
 
         self.publish_cmd_vel = self.create_publisher(Twist, 'cmd_vel', 10)
 
-        self.cones  # cones published by map
+        self.cones = None # cones published by map
         self.old_pos = np.array([0, -1]) # old roboter position
         self.bot_pos = np.array([0, 0])  # current roporter position
 
@@ -31,6 +31,11 @@ class Navigation(Node):
         is_in_front = np.dot(cones[1:], v_movement) > 0
         
         cones_in_front = cones[is_in_front]
+
+        # abort if no cones in front
+        if cones_in_front.size == 0:
+                target = None
+                return
 
         # get closest yellow and blue
         cones_blue = cones_in_front[cones_in_front[:,0] == self.BLUE]
@@ -54,16 +59,24 @@ class Navigation(Node):
         move_to_point()
 
     def move_to_point():
-        # TODO: get angle to target, set the linear speed of the bot and angular speed. drive to target
-        pass
+        twist_msg = Twist()
+
+        if target == None:
+            twist_msg.linear[2] = 0
+            twist_msg.angular[2] = 0
+
+            publish_cmd_vel.publish(twist_msg)
 
 
-        
-        
+            
+        trajectory = target - bot_pos
+        angle = np.arctan2(trajectory[0], trajectory[1]) - np.arctan2(bot_pos[0], bot_pos[1])
 
-        
-        
-        
+
+        twist_msg.linear[2] = 0.1
+        twist_msg.angular[2] = angle/10
+
+        publish_cmd_vel.publish(twist_msg)
 
 
 
