@@ -38,8 +38,7 @@ class LocalizationNode(Node):
         self.subscriber_bboxes_ = self.create_subscription(Float32MultiArray, '/bounding_boxes', self.received_bbox, 10)
         self.subscriber_scan = self.create_subscription(LaserScan, 'scan', self.received_scan,
                                                         qos_profile=qos_profile_sensor_data)
-        self.subscriber_odom = self.create_subscription(Odometry, 'odom', self.receive_odom,
-                                                        10)
+        self.subscriber_odom = self.create_subscription(Odometry, 'odom', self.receive_odom, 10)
         # Publisher for known cones
         self.publisher_cones = self.create_publisher(Float32MultiArray, '/potential_cones', 10)
         self.publisher_pos = self.create_publisher(Float32MultiArray, '/robot_pos', 10)
@@ -70,6 +69,9 @@ class LocalizationNode(Node):
 
         return points
 
+    def remove_lidar_zero_points(self, points):
+        return np.where(points.mean(axis=0) > 0.01, points, 1e6)
+
     def transform_points(self, points, stamp):
         # get the correct odom data depending on timestamp
         odom_idx = np.argmin(np.abs(self.odom_buffer.q[:, -1] - stamp))
@@ -98,6 +100,9 @@ class LocalizationNode(Node):
         stamp = header_to_float_stamp(scan.header)
         # transform the lidar data to 2d points
         points = self.lidar_data_to_point_cloud(scan.ranges)
+
+        # Remove the zero points from lidar
+        # points = self.remove_lidar_zero_points(points)
 
         # normalize with the movement of the bot (s.t. points are stationary)
         points = self.transform_points(points, stamp)
