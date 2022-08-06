@@ -102,7 +102,7 @@ class LocalizationNode(Node):
         points = self.lidar_data_to_point_cloud(scan.ranges)
 
         # Remove the zero points from lidar
-        # points = self.remove_lidar_zero_points(points)
+        points = self.remove_lidar_zero_points(points)
 
         # normalize with the movement of the bot (s.t. points are stationary)
         points = self.transform_points(points, stamp)
@@ -149,7 +149,7 @@ class LocalizationNode(Node):
 
     def received_bbox(self, msg):
         bboxes = np.array(msg.data)
-        bboxes = bboxes.reshape((-1, msg.layout.dim[1].size))
+        bboxes = bboxes.reshape((-1, msg.layout.dim[1].size))[1:]
         stamp_sec = int(bboxes[0, 0])
         stamp_nano = int(bboxes[0, 1])
         stamp = float(f"{stamp_sec}.{stamp_nano}")

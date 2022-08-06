@@ -63,7 +63,7 @@ class ConeDetectionNode(Node):
         self.publisher_bboxes_.publish(bboxes_msg)
         print(f"Published {len(bboxes)} bounding boxes at {str(datetime.now())}")
 
-        for bbox in bboxes:
+        for bbox in bboxes[1:]:
             cv2.rectangle(bgr_img, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), cone_colors[int(bbox[5])], thickness=2)
 
         cv2.imshow('Detected cones', bgr_img)
