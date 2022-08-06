@@ -125,6 +125,9 @@ class LocalizationNode(Node):
             odom.pose.pose.orientation.w
         )[2]
 
+        # print(f"{np.array(self.orientation)*180/np.pi}")
+        # self.orientation = self.orientation[2]
+
         stamp = float(f"{odom.header.stamp.sec}.{odom.header.stamp.nanosec}")
         self.odom_buffer.push(np.array([self.pos[0], self.pos[1], self.orientation, stamp]))
 
